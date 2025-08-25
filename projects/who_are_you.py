@@ -2,22 +2,12 @@
 
 foreverloop = 0
 
-nameslist = ()
+nameslist = []
 dictonary_age = {}
 dictonary_color = {}
-testlist = ()
-
-print("help me")
 
 while foreverloop < 5:
 
-    testvar = input("please help me")
-    
-    testlist.append(testvar)
-    testanswer = t
-
-    if testanswer in testlist:
-        print("IT WORKED WHY DID IT WORK")
 
     name = input("What is your name user: ")
     
