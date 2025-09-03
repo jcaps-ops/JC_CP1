@@ -62,4 +62,6 @@ for x in range(100):
             section3 = puzzlesym[selectedsection3]
             if selectedsection3 == 5:
                  selectedsection3 = -1
+    
+    print("seletedsection" + str(selectedsection))
             
