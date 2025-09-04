@@ -8,8 +8,9 @@ selectedsection3 = 0
 section1 = puzzlesym[selectedsection1]
 section2 = puzzlesym[selectedsection2]
 section3 = puzzlesym[selectedsection3]
+puzzleanswer = ["c", "f", "d"]
 
-print(" type A and D to move between sections. Use W to change lock part")
+print(" type A and D to move between sections. Use W to change lock part.Type E to")
 for x in range(100):
     if selectedsection == 1:
         print("-------|--------------------------")
@@ -62,6 +63,10 @@ for x in range(100):
             section3 = puzzlesym[selectedsection3]
             if selectedsection3 == 5:
                  selectedsection3 = -1
-    
+
+    if answered == "e":
+        if section1 == puzzleanswer[0] and section2 == puzzleanswer[1] and section3 == puzzleanswer[2]:
+              print("good job you solved it")
+
     print("seletedsection" + str(selectedsection))
             
