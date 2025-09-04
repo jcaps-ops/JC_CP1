@@ -7,3 +7,5 @@ start = sentance.find(word)
 lenght = len(word)
 #print(sentance[start:start+lenght])
 print(sentance.replace(word, "yellow"))
+age=input("age:")
+
