@@ -12,24 +12,24 @@ for I in (100, 1):
         num2 = int(num2)
 
         num3 = num1 + num2
-        print(f"{num1} + {num2} = {num3}")
+        print(f"{num1:.2f} + {num2:.2f} = {num3:.2f}")
 
         num3 = num1 - num2
-        print(f"{num1} - {num2} = {num3}")
+        print(f"{num1:.2f} - {num2:.2f} = {num3:.2f}")
 
         num3 = num1 * num2
-        print(f"{num1} * {num2} = {num3}")
+        print(f"{num1:.2f} * {num2:.2f} = {num3:.2f}")
 
         num3 = num1 / num2
-        print(f"{num1} / {num2} = {num3}")
+        print(f"{num1:.2f} / {num2:.2f} = {num3:.2f}")
 
         num3 = num1 ** num2
-        print(f"{num1} ** {num2} = {num3}")
+        print(f"{num1:.2f} ** {num2:.2f} = {num3:.2f}")
 
         num3 = num1 % num2
-        print(f"{num1} % {num2} = {num3}")
+        print(f"{num1:.2f} % {num2:.2f} = {num3:.2f}")
 
         num3 = num1 // num2
-        print(f"{num1} // {num2} = {num3}")
+        print(f"{num1:.2f} // {num2:.2f} = {num3:.2f}")
 
         cont1 = input("Do you want to keep going:")
