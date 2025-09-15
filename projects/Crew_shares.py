@@ -1,14 +1,14 @@
 #JC 2nd Crew shares
 
 Money = input("How much money does the ship have:")
-crew_count = input("how many crew members are there")
+crew_count = input("how many crew members are there:")
 crew_count = int(crew_count)
-
+Money = int(Money)
 print(crew_count)
 
-crew_count += 3
 
-Share_Value = (Money/(crew_count + 10))
+
+Share_Value = (Money / (crew_count + 10))
 crew_share = (Share_Value - 500)
 captian_shares = (Share_Value * 7)
 First_mate_shares = (Share_Value * 3)
