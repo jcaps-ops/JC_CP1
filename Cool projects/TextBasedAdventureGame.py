@@ -7,146 +7,122 @@ Score = 0
 tasks = 3
 difficulty = 1
 currenttask = 1
+playeranswer = ""
 incorrectline = 0
 
-print("Hello employee please look over these buy orders to find mistakes (L to look out of your monitor) ")
 
+
+                
+
+#Function blocks
+def tasktype1(taskroll):
+    
+    incorrectline = 0
+    if taskroll == 1:
+                incorrectline = 3
+                print("Tonny taco's --- Tonny taco's")
+                print("Buy amount:10 --- Buy amount:10")
+                print("Buy object:Party hats --- Buy object:Party hat" )
+                print("Order date:1/10 --- Order date:1/10" )
+                print("Order arrival:3/10 --- Order arrival:3/10")
+                print("Cost total:12.75 --- Cost total:12.75")
+                print("Shipment location:Arrived --- Shipment location:Arrived")
+    if taskroll == 2:
+                incorrectline = 7
+                print("Tonny taco's --- Tonny taco's")
+                print("Buy amount:10 --- Buy amount:10")
+                print("Buy object:Party hats --- Buy object:Party hats")
+                print("Order date:1/10 --- Order date:1/10")
+                print("Order arrival:3/10 --- Order arrival:3/10")
+                print("Cost total:12.75 --- Cost total:12.75")
+                print("Shipment location:Arrived --- Shipment location:Ongoing")
+    if taskroll == 3:
+                incorrectline = 1
+                print("Tonny taco's --- Tony taco's")
+                print("Buy amount:10 --- Buy amount:10")
+                print("Buy object:Party hats --- Buy object:Party hats")
+                print("Order date:1/10 --- Order date:1/10")
+                print("Order arrival:3/10 --- Order arrival:3/10")
+                print("Cost total:12.75 --- Cost total:12.75")
+                print("Shipment location:Arrived --- Shipment location:Arrived")
+    if taskroll == 4:
+                incorrectline = 4
+                print("Tonny taco's --- Tonny taco's")
+                print("Buy amount:10 --- Buy amount:10")
+                print("Buy object:Party hats --- Buy object:Party hats")
+                print("Order date:1/10 --- Order date;2/10")
+                print("Order arrival:3/10 --- Order arrival:3/10")
+                print("Cost total:12.75 --- Cost total:12.75")
+                print("Shipment location:Arrived --- Shipment location:Arrived")
+    if taskroll == 5:
+                incorrectline = 2
+                print("Tonny taco's --- Tonny taco's")
+                print("Buy amount:10 --- Buy amount:12")
+                print("Buy object:Party hats --- Buy object:Party hats")
+                print("Order date:1/10 --- Order date:1/10")
+                print("Order arrival:3/10 --- Order arrival:3/10")
+                print("Cost total:12.75 --- Cost total:12.75")
+                print("Shipment location:Arrived --- Shipment location:Arrived")
+    if taskroll == 6:
+                incorrectline = "no"
+                print("Tonny taco's --- Tonny taco's")
+                print("Buy amount:10 --- Buy amount:10")
+                print("Buy object:Party hats --- Buy object:Party hats")
+                print("Order date:1/10 --- Order date:1/10")
+                print("Order arrival:3/10 --- Order arrival:3/10")
+                print("Cost total:12.75 --- Cost total:12.75")
+                print("Shipment location:Arrived --- Shipment location:Arrived")
+
+
+print("Hello employee please look over these buy orders to find mistakes (L to look out of your monitor) ")
+print(incorrectline)
 for x in range(0, tasks):
     print("Hello user here is you order list")
+
+    taskroll = random.randint(1,6)
     if currenttask == 1:
         if difficulty == 1:
-            taskroll = random.randint(1,6)
-            #I LOVE PRINT BLOCKS
+            print("")
             if taskroll == 1:
                 incorrectline = 3
-                print("Tonny taco's --- Tonny taco's")
-                print("Buy amount:10 --- Buy amount:10")
-                print("Buy object:Party hats --- Buy object:Party hat" )
-                print("Order date:1/10 --- Order date:1/10" )
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Arrived")
             if taskroll == 2:
                 incorrectline = 7
-                print("Tonny taco's --- Tonny taco's")
-                print("Buy amount:10 --- Buy amount:10")
-                print("Buy object:Party hats --- Buy object:Party hats")
-                print("Order date:1/10 --- Order date:1/10")
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Ongoing")
             if taskroll == 3:
                 incorrectline = 1
-                print("Tonny taco's --- Tony taco's")
-                print("Buy amount:10 --- Buy amount:10")
-                print("Buy object:Party hats --- Buy object:Party hats")
-                print("Order date:1/10 --- Order date:1/10")
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Arrived")
             if taskroll == 4:
                 incorrectline = 4
-                print("Tonny taco's --- Tonny taco's")
-                print("Buy amount:10 --- Buy amount:10")
-                print("Buy object:Party hats --- Buy object:Party hats")
-                print("Order date:1/10 --- Order date;2/10")
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Arrived")
             if taskroll == 5:
                 incorrectline = 2
-                print("Tonny taco's --- Tonny taco's")
-                print("Buy amount:10 --- Buy amount:12")
-                print("Buy object:Party hats --- Buy object:Party hats")
-                print("Order date:1/10 --- Order date:1/10")
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Arrived")
             if taskroll == 6:
                 incorrectline = "no"
-                print("Tonny taco's --- Tonny taco's")
-                print("Buy amount:10 --- Buy amount:10")
-                print("Buy object:Party hats --- Buy object:Party hats")
-                print("Order date:1/10 --- Order date:1/10")
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Arrived")
+
+    if currenttask == 1:
+        if difficulty == 1:
+           tasktype1(taskroll)
     playeranswer = input("Which Line is incorrect(There can be nothing wrong):")
     incorrectline = str(incorrectline)
     if playeranswer == (incorrectline):
         print("correct")
     else:
-        if playeranswer != "L":
+        if playeranswer != "L" or playeranswer != "l":
             tasks += 1
             print("Incorrect")
         else:
             print("You see nothing")
-            if taskroll == 1:
-                incorrectline = 3
-                print("Tonny taco's --- Tonny taco's")
-                print("Buy amount:10 --- Buy amount:10")
-                print("Buy object:Party hats --- Buy object:Party hat" )
-                print("Order date:1/10 --- Order date:1/10" )
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Arrived")
-            if taskroll == 2:
-                incorrectline = 7
-                print("Tonny taco's --- Tonny taco's")
-                print("Buy amount:10 --- Buy amount:10")
-                print("Buy object:Party hats --- Buy object:Party hats")
-                print("Order date:1/10 --- Order date:1/10")
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Ongoing")
-            if taskroll == 3:
-                incorrectline = 1
-                print("Tonny taco's --- Tony taco's")
-                print("Buy amount:10 --- Buy amount:10")
-                print("Buy object:Party hats --- Buy object:Party hats")
-                print("Order date:1/10 --- Order date:1/10")
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Arrived")
-            if taskroll == 4:
-                incorrectline = 4
-                print("Tonny taco's --- Tonny taco's")
-                print("Buy amount:10 --- Buy amount:10")
-                print("Buy object:Party hats --- Buy object:Party hats")
-                print("Order date:1/10 --- Order date;2/10")
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Arrived")
-            if taskroll == 5:
-                incorrectline = 2
-                print("Tonny taco's --- Tonny taco's")
-                print("Buy amount:10 --- Buy amount:12")
-                print("Buy object:Party hats --- Buy object:Party hats")
-                print("Order date:1/10 --- Order date:1/10")
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Arrived")
-            if taskroll == 6:
-                incorrectline = "no"
-                print("Tonny taco's --- Tonny taco's")
-                print("Buy amount:10 --- Buy amount:10")
-                print("Buy object:Party hats --- Buy object:Party hats")
-                print("Order date:1/10 --- Order date:1/10")
-                print("Order arrival:3/10 --- Order arrival:3/10")
-                print("Cost total:12.75 --- Cost total:12.75")
-                print("Shipment location:Arrived --- Shipment location:Arrived")
-    playeranswer = input("Which Line is incorrect(There can be nothing wrong):")
-    incorrectline = str(incorrectline)
-    if playeranswer == (incorrectline):
-        print("correct")
-    else:
-        if playeranswer != "L":
-            tasks += 1
-            print("Incorrect")
+            
+        playeranswer = input("Which Line is incorrect(There can be nothing wrong):")
+        incorrectline = str(incorrectline)
+        if playeranswer == (incorrectline):
+            print("correct")
         else:
-            print("You see nothing")
+            if playeranswer != "L":
+                tasks += 1
+                print("Incorrect")
+            else:
+                print("You see nothing")
     
 print("Task commplete.Now onto your next test")
+
 
 
 
