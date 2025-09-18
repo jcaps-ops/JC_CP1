@@ -9,7 +9,7 @@ difficulty = 1
 currenttask = 1
 playeranswer = ""
 incorrectline = 0
-
+stage = 1
 
 
                 
@@ -102,26 +102,30 @@ for x in range(0, tasks):
     playeranswer = input("Which Line is incorrect(There can be nothing wrong):")
     incorrectline = str(incorrectline)
     if playeranswer == (incorrectline):
+        print("")
         print("correct")
+        print("")
     else:
-        if playeranswer != "L" or playeranswer != "l":
+        if playeranswer != "l":
             tasks += 1
             print("Incorrect")
         else:
-            print("You see nothing")
-            
-        playeranswer = input("Which Line is incorrect(There can be nothing wrong):")
-        incorrectline = str(incorrectline)
-        if playeranswer == (incorrectline):
-            print("correct")
-        else:
-            if playeranswer != "L":
-                tasks += 1
-                print("Incorrect")
-            else:
-                print("You see nothing")
+            print("------------------------------")
+            print("------------------------------")
+            print("------------------------------")
+            print("------------------------------")
+            print("----------------------*######+")
+            print("----------*@@@@%@@@@@-#@@@@@@#")
+            print("----------+####*#####-#@@@@@@#")
+            print("--=%@@%=--=++++=+++++-#@@@@@@#")
+            print("--=@@@%=--------------#@@@@@@#")
+            print("==+****========-------#@@@@@@#")
+            print("+++++++++++++++=------#@@@@@@#")
+            print("+++++++++++++++=------#@@@@@@#")
+
+            print("You see nothing Now it has reset")
     
-print("Task commplete.Now onto your next test")
+print("Task commplete.Now onto your next task")
 
 
 
