@@ -130,4 +130,12 @@ print("Task commplete.Now onto your next task")
 
 
 
-
+"""
+print("Ikea furniture --- Ikea furniture)
+print("Buy amount:26 --- Buy amount:26")
+print("Buy object:Tables --- Buy object:Tables")
+print("Order date:12/6 ---- Order date:12/6")
+print("Order Arrival 12/8 --- Order Arrival 12/8")
+print("Cost Total 127 --- Cost Total 127")
+print("Shipment location:Arrived --- ")
+"""
