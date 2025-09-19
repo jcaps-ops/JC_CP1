@@ -39,6 +39,7 @@ def breakdown():
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@@@@@@@@@@@@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     Needsreload = True
+    camon = False
     
 
 print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
@@ -70,6 +71,8 @@ for X in range(1,100):
         breakchance = random.randint(breakchance, 100)
         if breakchance == 100:
             if Needsreload == False:
+                camon = False
+                Needsreload = True
                 breakdown()
         else:
             if breakchance < 96:
@@ -83,12 +86,13 @@ for X in range(1,100):
                 print("To go into tasks Enter:T")
                 print("To Leave cameras please type EXIT")
             if plyaction == "Cams" or plyaction == "cams":
-                camon = False
+                camon = True
                 currentcam = 1
                 print("Basic cam layout")
             if plyaction == "D" or plyaction == "d":
                 if camon == True:
                     currentcam += 1
+                    print(currentcam)
                     if currentcam > 5:
                         currentcam = 1
                     if currentcam == 2:
@@ -112,13 +116,16 @@ for X in range(1,100):
             if plyaction =="e" or plyaction == "E":
                 if camon == True:
                     print("alarm")
-        if plyaction =="R" or plyaction == "r":
-            if camon == False:
-                    breakchance = 10
+    if plyaction =="R" or plyaction == "r":
+        print(Needsreload)
+        if Needsreload == True:
+                    breakchance = 0
                     print("errors fixed")
                     Refreshchance += 1
+        if camon == True:
+                print("place holder for camera refresh")
 
-            if plyaction == "Exit" or plyaction == "exit":
+        if plyaction == "Exit" or plyaction == "exit":
                 camon = False
-        if Refreshchance == 5:
+    if Refreshchance == 5:
             print("You got a haunting")
