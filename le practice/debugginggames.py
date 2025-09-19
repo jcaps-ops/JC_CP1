@@ -10,6 +10,10 @@ def start_game():
     game_over = False
     while not game_over:
         guess = input("Enter your guess: ")
+
+        #Could not correct the answer
+        guess = int(guess)
+
         if attempts >= max_attempts:
             print(f"Sorry, you've used all {max_attempts} attempts. The number was {number_to_guess}.")
             game_over = True
@@ -18,9 +22,10 @@ def start_game():
             game_over = True
         elif guess > number_to_guess:
             print("Too high! Try again.")
-        elif guess < number_to_guess:
+        #It was an elif it would not run if this was not fixed
+        else:
             print("Too low! Try again.")  
-        #Was not increasing the attempt tracker
+        #Was not increasing the attempt tracker so first psrt useless
         attempts += 1
 
         continue
