@@ -17,16 +17,19 @@ def start_game():
         if attempts >= max_attempts:
             print(f"Sorry, you've used all {max_attempts} attempts. The number was {number_to_guess}.")
             game_over = True
-        if guess == number_to_guess:
-            print("Congratulations! You've guessed the number!")
-            game_over = True
-        elif guess > number_to_guess:
-            print("Too high! Try again.")
-        #It was an elif it would not run if this was not fixed
-        else:
-            print("Too low! Try again.")  
-        #Was not increasing the attempt tracker so first psrt useless
-        attempts += 1
+
+        #Would still tell the user too low to high after already telling the user the answer
+        if attempts < max_attempts:
+            if guess == number_to_guess:
+                print("Congratulations! You've guessed the number!")
+                game_over = True
+            elif guess > number_to_guess:
+                print("Too high! Try again.")
+            #It was an elif it would not run if this was not fixed
+            else:
+                print("Too low! Try again.")  
+            #Was not increasing the attempt tracker so first part useless
+            attempts += 1
 
         continue
     print("Game Over. Thanks for playing!")
