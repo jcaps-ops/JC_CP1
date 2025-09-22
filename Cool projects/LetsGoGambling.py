@@ -24,7 +24,7 @@ for x in range(1,100):
     p_roll = str(p_roll)
 
     print(f"You rolled a {p_roll}")
-    print(f"The rolled a {D_roll}")
+    print(f"The Dealer rolled a {D_roll}")
 
     if p_roll > D_roll:
         money += bet * 2
