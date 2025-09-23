@@ -46,10 +46,13 @@ if randomvalue == 5:
     slot3 = "W"
 
 bet = input("How Much do you want to bet:")
-
+bet = int(bet)
 print(f"---{slot1}---{slot2}---{slot3}---")
 
-if slot1 == slot2 or slot2 == 3:
-        Money += bet * 1.5
-    if p:
-        money -= bet
+if slot1 == slot2 and slot2 == slot3:
+        Money += bet * 3
+elif slot1 == slot2 or slot2 == slot3:
+        Money += bet
+else:
+        Money -= bet
+    
