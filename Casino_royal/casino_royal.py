@@ -8,6 +8,8 @@ branchpath1 = ""
 branchpath2 = ""
 pathrand = 0
 money = 100
+boons = []
+potentialboon = {"double trouble": 80,"money laundering": 100,"bonus check": 60}
 
 def pathgen():
     global currentpath
@@ -21,7 +23,6 @@ def pathgen():
         branchpath1 = "blackjack" 
     if pathrand == 4:
         branchpath1 = "wheel"
-    print(branchpath1)
     pathrand = random.randint(1,4)
     global branchpath2
     if pathrand == 1:
@@ -32,7 +33,7 @@ def pathgen():
         branchpath2 = "blackjack" 
     if pathrand == 4:
         branchpath2 = "wheel"
-    print(branchpath2)
+    
 
     print(f"---------------{branchpath1}----")
     print(f"--{currentpath}-----------------")
@@ -59,6 +60,8 @@ def pathchoice():
         slotmachinegame()
     if currentpath == "blackjack":
          blackjackgame()
+    if currentpath == "wheel":
+         wheelgame()
 
 
 def dicegame():
@@ -211,7 +214,47 @@ def blackjackgame():
             print("You lost")
             money -= bet
 
-pathgen()
-pathchoice()
-print(f"Your current money is {money}")
+def wheelgame():
+    global money
+    bet = 0
+    bet_location = "white"
+
+    for x in range (1,100):
+        print(f"This is the amount of money you have {money}")
+        bet = input("How much would you like to bet:")
+        bet_location = input("What color are you betting on(black-red-green):")
+        bet = int(bet)
+
+        wheelspin = random.randint(1,101)
+        wheelcolor = ""
+        if wheelspin < 51:
+            wheelcolor = "black"
+        if wheelspin > 50 and wheelspin < 101:
+            wheelcolor = "red"
+        if wheelspin == 101:
+            wheelcolor = "green"
+        
+        print(f"The wheel landed on a {wheelcolor}")
+
+        if wheelcolor == bet_location:
+            money += bet * 2
+            print("You won")
+            if wheelcolor == "green":
+                money += bet * 2
+        else:
+            money -= bet
+            print("You lost")
+
+def store():
+    global money
+    boonop1 = potentialboon().index(random.randint(1,3))
+    print("The options at the store")
+    print(f"The first option is {boonop1}")
+    
+store()
+playing = True
+while playing == True:
+    pathgen()
+    pathchoice()
+    
 

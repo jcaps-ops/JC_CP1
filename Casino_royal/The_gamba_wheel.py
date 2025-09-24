@@ -1,10 +1,10 @@
 #JC 2nd this is for a ruletee wheel
 
+import random
+
 money = 100
 bet = 0
 bet_location = "white"
-
-import random
 
 for x in range (1,100):
     print(f"This is the amount of money you have {money}")
