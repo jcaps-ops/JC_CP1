@@ -9,7 +9,8 @@ branchpath2 = ""
 pathrand = 0
 money = 100
 boons = []
-potentialboon = {"double trouble": 80,"money laundering": 100,"bonus check": 60}
+potentailboonname = ["double trouble","money laundering","bonus check"]
+potentailbooncost = [60, 120, 70]
 
 def pathgen():
     global currentpath
@@ -247,9 +248,16 @@ def wheelgame():
 
 def store():
     global money
-    boonop1 = potentialboon().index(random.randint(1,3))
+    global potentailboonname
+    global potentailbooncost
+
+    boonrand = random.randint(1,3)
+    storeoption1name = potentailboonname[boonrand]
+    storeoption1cost = potentailbooncost[boonrand]
+
     print("The options at the store")
-    print(f"The first option is {boonop1}")
+    print(f"The first option is {storeoption1name} it costs {storeoption1cost} dollars")
+    print(f"the second option is")
     
 store()
 playing = True
