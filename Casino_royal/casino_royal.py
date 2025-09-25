@@ -10,8 +10,8 @@ pathrand = 0
 money = 100
 boonbet = 0
 boons = []
-potentailboonname = ["double trouble","money laundering","bonus check"]
-potentailbooncost = [60, 120, 70]
+potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance"]
+potentailbooncost = [60, 120, 70, 100]
 
 def pathgen():
     global currentpath
@@ -105,7 +105,8 @@ def dicegame():
 
 def slotmachinegame():
     global money
-    bet = 0
+    global boonbet
+    boonbet = 0
 
     slot1 = ""
     slot2 = ""
@@ -147,34 +148,38 @@ def slotmachinegame():
     if randomvalue == 5:
             slot3 = "W"
 
-    bet = input("How Much do you want to bet:")
-    bet = int(bet)
+    boonbet = input("How Much do you want to bet:")
+    boonbet = int(boonbet)
     print(f"---{slot1}---{slot2}---{slot3}---")
 
     if slot1 == slot2 and slot2 == slot3:
-                money += bet * 3
+                calcboon()
+                money += boonbet * 3
     elif slot1 == slot2 or slot2 == slot3:
-                money += bet
+                calcboon()
+                money += boonbet
     else:
-                money -= bet
+                calcboon()
+                money -= boonbet
         
 def blackjackgame():
       
     global money
-    bet = 0
+    global boonbet
+    boonbet = 0
     total = 0
     is_playing = True
     d_total = 0
 
     
     print(f"the anount of money you have is {money}")
-    bet = input("How much do you want to bet:")
-    bet = int(bet)
+    boonbet = input("How much do you want to bet:")
+    boonbet = int(boonbet)
 
-    while bet > money:
+    while boonbet > money:
             print("You do not have enough money to bet that")
-            bet = input("How much do you want to bet:")
-            bet = int(bet)
+            boonbet = input("How much do you want to bet:")
+            boonbet = int(boonbet)
 
     total = 0
 
@@ -216,23 +221,27 @@ def blackjackgame():
     print(f"The dealers total is {d_total}")
 
     if total > d_total:
-        money += bet
+        calcboon()
+        money += boonbet
         print("You won")
     if total == d_total:
+        calcboon()
         print("You both tied")
     if total < d_total:
         print("You lost")
-        money -= bet
+        calcboon()
+        money -= boonbet
 
 def wheelgame():
     global money
-    bet = 0
+    global boonbet
+    boonbet = 0
     bet_location = "white"
 
-    print(f"This is the amount of money you have {money}")
-    bet = input("How much would you like to bet:")
+    print(f"You have {money} dollars")
+    boonbet = input("How much would you like to bet:")
     bet_location = input("What color are you betting on(black-red-green):")
-    bet = int(bet)
+    boonbet = int(boonbet)
 
     wheelspin = random.randint(1,101)
     wheelcolor = ""
@@ -246,12 +255,15 @@ def wheelgame():
     print(f"The wheel landed on a {wheelcolor}")
 
     if wheelcolor == bet_location:
-            money += bet * 2
+            calcboon()
+            money += boonbet * 2
             print("You won")
             if wheelcolor == "green":
-                money += bet * 2
+                calcboon()
+                money += boonbet * 2
     else:
-            money -= bet
+            calcboon()
+            money -= boonbet
             print("You lost")
 
 def store():
@@ -259,16 +271,17 @@ def store():
     global potentailboonname
     global potentailbooncost
 
-    boonrand1 = random.randint(0,2)
+    boonrand1 = random.randint(0,len(potentailbooncost) - 1)
     print(boonrand1)
     storeoption1name = potentailboonname[boonrand1]
     storeoption1cost = potentailbooncost[boonrand1]
 
-    boonrand2 = random.randint(0,2)
+    boonrand2 = random.randint(0,(len(potentailbooncost) - 1))
     storeoption2name = potentailboonname[boonrand2]
     storeoption2cost = potentailbooncost[boonrand2]
     global boons
 
+    print(f"You have {money} dollars")
     print("The options at the store")
     print(f"The first option is {storeoption1name} it costs {storeoption1cost} dollars")
     print(f"the second option is {storeoption2name} it costs{storeoption2cost} dollars")
@@ -296,14 +309,23 @@ def store():
     
     
 def calcboon():
+    global money
     global boonbet
     global boons
     if "double trouble" in boons:
         boonbet * 2
+    if "bonus check" in boons:
+         money += 5
+    if "money laundering" in boons:
+         monbet = random.randint(1,5)
+         if monbet == 1:
+              money += 30
+    if "Basic inssurance" in boons:
+         bi = boonbet/2
+         bi = int(bi)
+         money += bi
 
 
-store()
-dicegame()
 playing = True
 while playing == True:
     pathgen()
