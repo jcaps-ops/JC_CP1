@@ -255,9 +255,15 @@ def store():
     storeoption1name = potentailboonname[boonrand]
     storeoption1cost = potentailbooncost[boonrand]
 
+    boonrand = random.randint(1,3)
+    storeoption2name = potentailboonname[boonrand]
+    storeoption2cost = potentailbooncost[boonrand]
+    global boons
+
     print("The options at the store")
     print(f"The first option is {storeoption1name} it costs {storeoption1cost} dollars")
-    print(f"the second option is")
+    print(f"the second option is {storeoption2name} it costs{storeoption2cost} dollars")
+    plyerinput = input("If you want to buy an option please input the number.If you do not want to buy one type n:")
     
 store()
 playing = True
