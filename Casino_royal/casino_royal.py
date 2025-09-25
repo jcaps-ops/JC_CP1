@@ -8,13 +8,14 @@ branchpath1 = ""
 branchpath2 = ""
 pathrand = 0
 money = 100
+boonbet = 0
 boons = []
 potentailboonname = ["double trouble","money laundering","bonus check"]
 potentailbooncost = [60, 120, 70]
 
 def pathgen():
     global currentpath
-    pathrand = random.randint(1,4)
+    pathrand = random.randint(1,5)
     global branchpath1
     if pathrand == 1:
         branchpath1 = "dice"
@@ -24,7 +25,9 @@ def pathgen():
         branchpath1 = "blackjack" 
     if pathrand == 4:
         branchpath1 = "wheel"
-    pathrand = random.randint(1,4)
+    if pathrand == 5:
+        branchpath1 = "store"
+    pathrand = random.randint(1,5)
     global branchpath2
     if pathrand == 1:
         branchpath2 = "dice"
@@ -34,6 +37,8 @@ def pathgen():
         branchpath2 = "blackjack" 
     if pathrand == 4:
         branchpath2 = "wheel"
+    if pathrand == 5:
+        branchpath2 = "store"
     
 
     print(f"---------------{branchpath1}----")
@@ -63,12 +68,15 @@ def pathchoice():
          blackjackgame()
     if currentpath == "wheel":
          wheelgame()
+    if currentpath == "store":
+        store()
 
 
 def dicegame():
     global money
         
-    bet = 0 
+    global boonbet
+    boonbet = 0
     p_roll = 0
     D_roll = 0
 
@@ -77,8 +85,8 @@ def dicegame():
 
     print(f"Your current money is {money}")
 
-    bet = input("How much would you like to bet:")
-    bet = int(bet)
+    boonbet = input("How much would you like to bet:")
+    boonbet = int(boonbet)
 
     p_roll = random.randint(1,6)
     D_roll = random.randint(1,6)
@@ -89,9 +97,11 @@ def dicegame():
     print(f"The Dealer rolled a {D_roll}")
 
     if p_roll > D_roll:
-        money += bet * 2
+        calcboon()
+        money += boonbet * 2
     if p_roll < D_roll:
-        money -= bet
+        calcboon()
+        money -= boonbet
 
 def slotmachinegame():
     global money
@@ -156,93 +166,91 @@ def blackjackgame():
     is_playing = True
     d_total = 0
 
-    for x in range (1,100):
-        print(f"the anount of money you have is {money}")
-        bet = input("How much do you want to bet:")
-        bet = int(bet)
+    
+    print(f"the anount of money you have is {money}")
+    bet = input("How much do you want to bet:")
+    bet = int(bet)
 
-        while bet > money:
+    while bet > money:
             print("You do not have enough money to bet that")
             bet = input("How much do you want to bet:")
             bet = int(bet)
 
-        
+    total = 0
 
+    total +=  random.randint(1,10)
+    total +=  random.randint(1,10)
 
-        total = 0
+    print(f"Your total is {total}")
 
-        total +=  random.randint(1,10)
-        total +=  random.randint(1,10)
+    is_playing = True
 
-        print(f"Your total is {total}")
+    while is_playing == True:
+        p_action = input("Would you like to hit or stand:")
 
-        is_playing = True
+        if p_action == "hit":
+            total +=  random.randint(1,10)
+            print(total)
 
-        while is_playing == True:
-            p_action = input("Would you like to hit or stand:")
-
-            if p_action == "hit":
-                total +=  random.randint(1,10)
-                print(total)
-
-                if total > 21:
-                    total = 0
-                    print("You busted")
-                    is_playing = False
-
-            elif p_action == "stand":
+            if total > 21:
+                total = 0
+                print("You busted")
+                print("what")
                 is_playing = False
-            else:
+
+        elif p_action == "stand":
+                print("what")
+                is_playing = False
+        else:
                 print("That is not an acceptible option")
 
-        d_total = 0
+    d_total = 0
 
-        while d_total < 17:
-            d_total += random.randint(1,10)
+    while d_total < 17:
+        d_total += random.randint(1,10)
 
         if d_total > 21:
 
             d_total = 0
 
-        print(f"The dealers total is {d_total}")
+    print(f"The dealers total is {d_total}")
 
-        if total > d_total:
-            money += bet
-            print("You won")
-        if total == d_total:
-            print("You both tied")
-        if total < d_total:
-            print("You lost")
-            money -= bet
+    if total > d_total:
+        money += bet
+        print("You won")
+    if total == d_total:
+        print("You both tied")
+    if total < d_total:
+        print("You lost")
+        money -= bet
 
 def wheelgame():
     global money
     bet = 0
     bet_location = "white"
 
-    for x in range (1,100):
-        print(f"This is the amount of money you have {money}")
-        bet = input("How much would you like to bet:")
-        bet_location = input("What color are you betting on(black-red-green):")
-        bet = int(bet)
+    print(f"This is the amount of money you have {money}")
+    bet = input("How much would you like to bet:")
+    bet_location = input("What color are you betting on(black-red-green):")
+    bet = int(bet)
 
-        wheelspin = random.randint(1,101)
-        wheelcolor = ""
-        if wheelspin < 51:
+    wheelspin = random.randint(1,101)
+    wheelcolor = ""
+    if wheelspin < 51:
             wheelcolor = "black"
-        if wheelspin > 50 and wheelspin < 101:
+    if wheelspin > 50 and wheelspin < 101:
             wheelcolor = "red"
-        if wheelspin == 101:
+    if wheelspin == 101:
             wheelcolor = "green"
         
-        print(f"The wheel landed on a {wheelcolor}")
+    print(f"The wheel landed on a {wheelcolor}")
 
-        if wheelcolor == bet_location:
+    if wheelcolor == bet_location:
             money += bet * 2
             print("You won")
             if wheelcolor == "green":
                 money += bet * 2
-        else:
+    else:
             money -= bet
             print("You lost")
 
@@ -251,21 +259,51 @@ def store():
     global potentailboonname
     global potentailbooncost
 
-    boonrand = random.randint(1,3)
-    storeoption1name = potentailboonname[boonrand]
-    storeoption1cost = potentailbooncost[boonrand]
+    boonrand1 = random.randint(0,2)
+    print(boonrand1)
+    storeoption1name = potentailboonname[boonrand1]
+    storeoption1cost = potentailbooncost[boonrand1]
 
-    boonrand = random.randint(1,3)
-    storeoption2name = potentailboonname[boonrand]
-    storeoption2cost = potentailbooncost[boonrand]
+    boonrand2 = random.randint(0,2)
+    storeoption2name = potentailboonname[boonrand2]
+    storeoption2cost = potentailbooncost[boonrand2]
     global boons
 
     print("The options at the store")
     print(f"The first option is {storeoption1name} it costs {storeoption1cost} dollars")
     print(f"the second option is {storeoption2name} it costs{storeoption2cost} dollars")
     plyerinput = input("If you want to buy an option please input the number.If you do not want to buy one type n:")
+    if plyerinput == "1":
+         if money >= storeoption1cost:
+              boons.append(storeoption1name)
+              money -= storeoption1cost
+              potentailboonname.pop(boonrand1)
+              potentailbooncost.pop(boonrand1)
+    elif plyerinput == "2":
+         if money >= storeoption2cost:
+              boons.append(storeoption2name)
+              money -= storeoption2cost
+              potentailboonname.pop(boonrand2)
+              potentailbooncost.pop(boonrand2)
+    elif plyerinput == "n":
+         pass
+    else:
+         print("not excepted input skill issue")
     
+    print(boons)
+    print(potentailbooncost)
+    print(potentailboonname)
+    
+    
+def calcboon():
+    global boonbet
+    global boons
+    if "double trouble" in boons:
+        boonbet * 2
+
+
 store()
+dicegame()
 playing = True
 while playing == True:
     pathgen()
