@@ -403,8 +403,36 @@ def jackblack():
     print("A chalager approches you he challenges you to baccarate")
     print("It is time to face your first boss jack black you must get twice your current amount of money")
     while money < curentmoney * 2:   
-        print(f"you have {money} dollars")
-        boonbet = input("How much would you like to bet:")
+            print(f"you have {money} dollars")
+            boonbet = input("How much would you like to bet:")
+
+            total += random.randint(1,9)
+            total += random.randint(1,9)
+
+            if total > 10:
+                total -= 10
+
+            p_action = input("would you like to stand or hit")
+            if p_action == "hit":
+                total += random.randint(1,9)
+                if total > 10:
+                    total -= 10
+            pdist = 9 - total
+            dealertotal = random.randint(6,9)
+            ddist = 9 - dealertotal
+
+            if pdist < ddist:
+                print("you won")
+                calcboon()
+                money += boonbet
+            elif pdist == ddist:
+                 calcboon()
+            else:
+                 print("You lose")
+                 calcboon()
+                 money -= boonbet
+        
+
 
     
 
@@ -413,5 +441,6 @@ while playing == True:
     pathgen()
     pathchoice()
     levelCounter -= 1
-    
+    if levelCounter <= 0:
+        jackblack()
 
