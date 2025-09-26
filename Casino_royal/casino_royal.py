@@ -7,14 +7,14 @@ currentpath = "dice"
 branchpath1 = ""
 branchpath2 = ""
 pathrand = 0
-money = 100
+money = 150
 boonbet = 0
 boons = []
-potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance"]
-potentailbooncost = [60, 120, 70, 100]
+potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple"]
+potentailbooncost = [60, 120, 70, 100, 180, 50, 100]
 global islost
 islost = False
-levelCounter = 1
+levelCounter = 10
 
 def pathgen():
     global currentpath
@@ -342,7 +342,29 @@ def calcboon():
             bi = boonbet/4
             bi = int(bi)
             money += bi
-            print(f"Your insurance kicked in saving you {bi} dollars")
+            print(f"Your Basic insurance kicked in saving you {bi} dollars")
+    
+    if "diamond inssurance" in boons:
+         
+         if islost == True:
+            bi = boonbet/2
+            bi = int(bi)
+            money += bi
+            print(f"Your Diamond insurance kicked in saving you {bi} dollars")
+    
+    if "Daily Double" in boons:
+         chance = random.randint(1,20)
+         if chance == 1:
+              print(f"You stared with {money}")
+              money * 2
+              print("Your daily double kicked in")
+    if "Daily Triple" in boons:
+         chance = random.randint(1,20)
+         if chance == 1:
+              print(f"You stared with {money}")
+              money * 3
+              print("Your daily Triple kicked in")
+    
 
 def jackblack():
     #this is baccarate 
@@ -405,22 +427,31 @@ def jackblack():
     while money < curentmoney * 2:   
             print(f"you have {money} dollars")
             boonbet = input("How much would you like to bet:")
-
+            total = 0
             total += random.randint(1,9)
             total += random.randint(1,9)
 
-            if total > 10:
-                total -= 10
+            if total >= 10:
+                total -= 9
+
+            print(total)
 
             p_action = input("would you like to stand or hit")
             if p_action == "hit":
                 total += random.randint(1,9)
-                if total > 10:
-                    total -= 10
+                if total >= 10:
+                    total -= 9
             pdist = 9 - total
-            dealertotal = random.randint(6,9)
+            dealertotal = random.randint(5,9)
             ddist = 9 - dealertotal
 
+            print(f"You got a {total}")
+            print(f"Jack black got a {dealertotal}")
+
+            ddist = abs(ddist)
+            pdist = abs(pdist)
+            
+            boonbet = int(boonbet)
             if pdist < ddist:
                 print("you won")
                 calcboon()
@@ -442,5 +473,6 @@ while playing == True:
     pathchoice()
     levelCounter -= 1
     if levelCounter <= 0:
+        input("Are you ready to countinue")
         jackblack()
 
