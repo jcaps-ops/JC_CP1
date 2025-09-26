@@ -16,3 +16,10 @@ now = dt.datetime.now()
 hour = now.strftime("%H")
 print(hour)
 print(f"My hour varible is a string: {isinstance(hour,str)}" )
+
+def calc():
+    total = 10
+    return total
+
+test = calc()
+print(test)
