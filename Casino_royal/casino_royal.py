@@ -15,6 +15,7 @@ potentailbooncost = [60, 120, 70, 100, 180, 50, 100]
 global islost
 islost = False
 levelCounter = 10
+luckstat = 0
 
 def pathgen():
     global currentpath
@@ -109,6 +110,8 @@ def dicegame():
         islost = True
         calcboon()
         money -= boonbet
+    if p_roll == D_roll:
+         calcboon()
 
 def slotmachinegame():
     global money
@@ -320,9 +323,13 @@ def store():
     
     
 def calcboon():
+    
+    global luckstat
     global money
     global boonbet
     global boons
+    print(20 - luckstat)
+
     if "double trouble" in boons:
         boonbet * 2
         
@@ -331,7 +338,8 @@ def calcboon():
          
     if "money laundering" in boons:
         
-         monbet = random.randint(1,5)
+         monbet = random.randint(1,round(5 - (luckstat/5)))
+         print(monbet)
          if monbet == 1:
               money += 30
               print(f"money laundering sucsess you now have{money}")
@@ -353,16 +361,18 @@ def calcboon():
             print(f"Your Diamond insurance kicked in saving you {bi} dollars")
     
     if "Daily Double" in boons:
-         chance = random.randint(1,20)
+         chance = random.randint(1,20 - luckstat)
+         print(chance)
          if chance == 1:
               print(f"You stared with {money}")
-              money * 2
+              money += money 
               print("Your daily double kicked in")
     if "Daily Triple" in boons:
-         chance = random.randint(1,20)
+         chance = random.randint(1, 20 - luckstat)
+         print(chance)
          if chance == 1:
               print(f"You stared with {money}")
-              money * 3
+              money += money * 3
               print("Your daily Triple kicked in")
     
 
@@ -465,8 +475,8 @@ def jackblack():
         
 
 
-    
-
+luck = 10
+store()
 playing = True
 while playing == True:
     pathgen()

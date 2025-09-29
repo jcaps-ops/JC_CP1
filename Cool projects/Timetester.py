@@ -6,7 +6,7 @@ import datetime as dt
 current_time = time.time()
 readable_time = time.ctime(current_time)
 
-
+testlist = [True, False, "Dave"]
 
 print(f"{current_time}")
 print(readable_time)
@@ -23,3 +23,6 @@ def calc():
 
 test = calc()
 print(test)
+
+
+print(testlist)
