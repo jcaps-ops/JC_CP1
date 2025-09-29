@@ -472,7 +472,9 @@ def jackblack():
                  print("You lose")
                  calcboon()
                  money -= boonbet
-        
+
+def createui():
+    print("")
 
 
 luck = 10
