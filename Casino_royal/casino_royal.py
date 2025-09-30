@@ -10,8 +10,8 @@ pathrand = 0
 money = 150
 boonbet = 0
 boons = []
-potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple"]
-potentailbooncost = [60, 120, 70, 100, 180, 50, 100]
+potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple","Lucky coin","Budlight","Sober"]
+potentailbooncost = [60, 120, 70, 100, 180, 50, 100, 60, 75, 136]
 global islost
 islost = False
 levelCounter = 10
@@ -284,6 +284,8 @@ def store():
     global money
     global potentailboonname
     global potentailbooncost
+    global luckstat
+    newboon = ""
 
     boonrand1 = random.randint(0,len(potentailbooncost) - 1)
     storeoption1name = potentailboonname[boonrand1]
@@ -302,12 +304,14 @@ def store():
     if plyerinput == "1":
          if money >= storeoption1cost:
               boons.append(storeoption1name)
+              newboon = (storeoption1name)
               money -= storeoption1cost
               potentailboonname.pop(boonrand1)
               potentailbooncost.pop(boonrand1)
     elif plyerinput == "2":
          if money >= storeoption2cost:
               boons.append(storeoption2name)
+              newboon = (storeoption2name)
               money -= storeoption2cost
               potentailboonname.pop(boonrand2)
               potentailbooncost.pop(boonrand2)
@@ -316,7 +320,12 @@ def store():
     else:
          print("not excepted input skill issue")
          store()
-    
+    if newboon == "Lucky coin":
+        luckstat += 3
+    if newboon == "Budlight":
+        luckstat += 5
+    if newboon == "Sober":
+        luckstat -= 3
     print(boons)
     
     
@@ -359,18 +368,20 @@ def calcboon():
     
     if "Daily Double" in boons:
          chance = random.randint(1,20 - luckstat)
-         print(chance)
          if chance == 1:
               print(f"You stared with {money}")
               money += money 
               print("Your daily double kicked in")
     if "Daily Triple" in boons:
          chance = random.randint(1, 20 - luckstat)
-         print(chance)
          if chance == 1:
               print(f"You stared with {money}")
               money += money * 3
               print("Your daily Triple kicked in")
+    if "Budlight" in boons:
+         money -= 2
+    if "Sober" in boons:
+         money += 10
     
 
 def jackblack():
@@ -379,6 +390,7 @@ def jackblack():
     global boonbet
     curentmoney = money
     global islost
+    global levelCounter
     print("*********************************##%%%%%%%%%%%#######%#########%%###########*#######%%%#########%%%%%%%%%%%%%%#################################*****##***************")
     print("*++++++************###############%%%#%%%%##########################%###############%%%%%#######%%%%%%%%%%%%###################################*****##***************")
     print("+++++*++********###########################%##############%%###############*####**===-==+++####*##%%%%%%%%%%%%%%%%%##########################***********************+")
@@ -469,13 +481,14 @@ def jackblack():
                  print("You lose")
                  calcboon()
                  money -= boonbet
+    levelCounter = 10
         
 
-def createui():
-    print("")
+def startingui():
+    startint = input("")
 
 
-luckstat = 10
+luckstat = 0
 store()
 playing = True
 while playing == True:
