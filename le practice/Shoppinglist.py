@@ -6,11 +6,17 @@ while True:
     if action == "add":
         adding = input("What would you like to add:")
         shoppinglist.append(adding)
-    if action == "remove":
+    elif action == "remove":
         removing = input("What do yo want to remove:")
-        shoppinglist.remove(removing)
+        if removing in shoppinglist:
+            shoppinglist.remove(removing)
+        else:
+            print("That is not one of the items")
         
-    if action == "exit":
+    elif action == "exit":
         break
-    if action == "show":
+    elif action == "show":
         print(shoppinglist)
+    else:
+        print("That is not an acepted answer")
+        

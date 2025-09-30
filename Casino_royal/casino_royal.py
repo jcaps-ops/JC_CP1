@@ -286,7 +286,6 @@ def store():
     global potentailbooncost
 
     boonrand1 = random.randint(0,len(potentailbooncost) - 1)
-    print(boonrand1)
     storeoption1name = potentailboonname[boonrand1]
     storeoption1cost = potentailbooncost[boonrand1]
 
@@ -316,10 +315,9 @@ def store():
          pass
     else:
          print("not excepted input skill issue")
+         store()
     
     print(boons)
-    print(potentailbooncost)
-    print(potentailboonname)
     
     
 def calcboon():
@@ -328,7 +326,6 @@ def calcboon():
     global money
     global boonbet
     global boons
-    print(20 - luckstat)
 
     if "double trouble" in boons:
         boonbet * 2
@@ -472,12 +469,13 @@ def jackblack():
                  print("You lose")
                  calcboon()
                  money -= boonbet
+        
 
 def createui():
     print("")
 
 
-luck = 10
+luckstat = 10
 store()
 playing = True
 while playing == True:
