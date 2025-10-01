@@ -26,3 +26,5 @@ print(test)
 
 
 print(testlist)
+
+time.sleep(3)
