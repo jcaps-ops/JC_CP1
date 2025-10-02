@@ -16,7 +16,7 @@ potentailboonname = ["double trouble","money laundering","bonus check","Basic in
 potentailbooncost = [60, 120, 70, 100, 180, 50, 100, 60, 75, 136]
 global islost
 islost = False
-levelCounter = 1
+levelCounter = 10
 luckstat = 0
 
 def pathgen():
@@ -500,7 +500,9 @@ def jackblack():
     print("==++*******##*#*****#************##%#####%%%%%%###################################################################%%%%%%%%%%%%%##########+#%%%%%%%%%%%%%%%@%@@%%%%%%%")
     time.sleep(0.1)
     print("A challanger approches!\nHe challenges you to a game of baccarate!")
+    time.sleep(0.2)
     print("It is time to face your first boss; jack black. you must get twice your current amount of money in order to beat him.")
+    time.sleep(0.2)
     while money < curentmoney * 2:   
             print(f"you have {money} dollars")
             boonbet = input("How much would you like to bet:")
@@ -632,7 +634,7 @@ def startingui():
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     time.sleep(0.1)
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-    startint = input("Would you like to start")
+    startint = input("Would you like to start:")
     global playing
     playing = True
 
@@ -688,6 +690,6 @@ while playing == True:
     pathchoice()
     levelCounter -= 1
     if levelCounter <= 0:
-        input("Are you ready to countinue")
+        input("Are you ready to countinue:")
         jackblack()
 
