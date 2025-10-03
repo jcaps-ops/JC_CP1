@@ -1,0 +1,46 @@
+#JC 2nd rock paper sissor
+
+import random
+
+paction = ""
+while True:
+    p_int = input("What would you like to do (Type r,p,s)")
+
+    if p_int != "r" and p_int != "p" and p_int != "s":
+        print("Skill issue")
+    paction = p_int
+
+    npc_rand = random.randint(1,3)
+    if npc_rand == 1:
+        E_action = "r"
+    if npc_rand == 2:
+        E_action = "p"
+    if npc_rand == 3:
+        E_action = "s"
+
+    print(E_action)
+
+    if paction == "r":
+        print("")
+
+    if p_int == E_action:
+        print("you tied")
+    elif p_int == "r" and E_action == "p":
+        print("You lose")
+    elif p_int == "p" and E_action == "r":
+        print("You win")
+    elif p_int == "s" and E_action == "r":
+        print("You lose")
+    elif p_int == "p" and E_action == "s":
+        print("You lose")
+    elif p_int == "s" and E_action == "p":
+        print("You win")
+    elif p_int == "r" and E_action == "s":
+        print("You win")
+    else:
+        print("I dont even know")
+
+
+
+
+        
