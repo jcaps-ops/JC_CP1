@@ -5,11 +5,17 @@ import time
 
 paction = ""
 while True:
-    p_int = input("What would you like to do (Type r,p,s)")
+    p_int = input("What would you like to do (Type r,p,s) or type E to exit")
 
     if p_int != "r" and p_int != "p" and p_int != "s":
         print("Skill issue")
+        if p_int == "e":
+            break
+    
     paction = p_int
+
+    
+
 
     npc_rand = random.randint(1,3)
     if npc_rand == 1:
