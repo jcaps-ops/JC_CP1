@@ -101,8 +101,7 @@ def dicegame():
 
     print(f"Your current money is {money}")
 
-    boonbet = input("How much would you like to bet:")
-    boonbet = int(boonbet)
+    bet()
 
     p_roll = random.randint(1,6)
     D_roll = random.randint(1,6)
@@ -168,8 +167,7 @@ def slotmachinegame():
     if randomvalue == 5:
             slot3 = "W"
     print(f"You have {money} dollars")
-    boonbet = input("How Much do you want to bet:")
-    boonbet = int(boonbet)
+    bet()
     print(f"---{slot1}---{slot2}---{slot3}---")
 
     if slot1 == slot2 and slot2 == slot3:
@@ -195,13 +193,7 @@ def blackjackgame():
 
     
     print(f"the anount of money you have is {money}")
-    boonbet = input("How much do you want to bet:")
-    boonbet = int(boonbet)
-
-    while boonbet > money:
-            print("You do not have enough money to bet that")
-            boonbet = input("How much do you want to bet:")
-            boonbet = int(boonbet)
+    bet()
 
     total = 0
 
@@ -261,9 +253,7 @@ def wheelgame():
     bet_location = "white"
 
     print(f"You have {money} dollars")
-    boonbet = input("How much would you like to bet:")
-    bet_location = input("What color are you betting on(black-red-green):")
-    boonbet = int(boonbet)
+    bet()
 
     wheelspin = random.randint(1,101)
     wheelcolor = ""
@@ -509,7 +499,7 @@ def jackblack():
     time.sleep(0.2)
     while money < curentmoney * 2:   
             print(f"you have {money} dollars")
-            boonbet = input("How much would you like to bet:")
+            bet()
             total = 0
             total += random.randint(1,9)
             total += random.randint(1,9)
@@ -959,8 +949,21 @@ def level2gen():
     print("**#%****+****###+++****##+****++++**+*######%%%%%%####**++++++***######=+*%%#%%%+++++++*##%%%@%%@@@@#%%%%%#+++++++*+#**%@########***++=++++*%#%#####%#%%%#**++++++***##")
     time.sleep(0.1)
     print("##%##**+*+##%#%**#*+++**##*#*+**#**##+##**###**#**###*#*+++++=+****#+*#+#+*%###**++##++*+*##%%#***+*****+##*+++++**###%#%##%#+*###**++++++**#*+%#**#*######**++++*##+##")
-    time.sleep(0.1)                                                                                                                                                                                                                                                                                                                                          
-                                                                                                                                                                       
+    time.sleep(0.1)
+                                                                                                                                                                                                                                                                                                                        
+
+def bet(): 
+    print()               
+    global money
+    global boonbet
+    while True:
+        boonbet = input("How much do you want")
+        boonbet = int(boonbet)
+
+        if boonbet > money:
+             print("To much money please input a accepted amount")
+        else:
+            break
 
 playing = False
 startingui()
@@ -972,4 +975,3 @@ while playing == True:
     if levelCounter <= 0 and bosslevel == 1:
         input("Are you ready to countinue:")
         jackblack()
-
