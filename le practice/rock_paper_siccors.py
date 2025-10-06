@@ -214,6 +214,8 @@ while True:
         paper()
     if p_int == "s":
         sissor()
+
+    time.sleep(0.5)
     if E_action == "r":
         rock()
     if E_action == "p":
