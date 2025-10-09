@@ -9,12 +9,12 @@ currentpath = "dice"
 branchpath1 = ""
 branchpath2 = ""
 pathrand = 0
-money = 150
+money = 250
 boonbet = 0
 boons = []
 classes = []
-potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple","Lucky coin","Budlight","Sober"]
-potentailbooncost = [60, 120, 70, 100, 180, 50, 100, 60, 75, 136]
+potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple","Lucky coin","Budlight","Sober","basic Money maker","Extreme money maker","Money printer"]
+potentailbooncost = [60, 120, 70, 100, 180, 50, 100, 60, 75, 136, 120, 180]
 global islost
 islost = False
 levelCounter = 10
@@ -338,19 +338,20 @@ def calcboon():
     global money
     global boonbet
     global boons
+    income = 0
 
     if "double trouble" in boons:
         boonbet * 2
         
     if "bonus check" in boons:
-         money += 5
+         income += 5
          
     if "money laundering" in boons:
         
          monbet = random.randint(1,round(5 - (luckstat/5)))
          print(monbet)
          if monbet == 1:
-              money += 30
+              income += 30
               print(f"money laundering sucsess you now have{money}")
         
     if "Basic inssurance" in boons:
@@ -384,7 +385,18 @@ def calcboon():
     if "Budlight" in boons:
          money -= 2
     if "Sober" in boons:
-         money += 10
+         income += 10
+    if "Money printer" in boons:
+         income += 15
+    if "basic Money maker" in boons:
+         income += 2
+         income * 2
+    if "Extreme money maker" in boons:
+         income += 2
+         income * 3
+    
+
+    money += income
     
 
 def jackblack():
@@ -635,6 +647,8 @@ def startingui():
     startint = input("Would you like to start:")
     if startint != "test":
         leveldesign1()
+    if startint == "store":
+        store()
     global playing
     playing = True
 
