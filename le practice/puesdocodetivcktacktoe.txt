@@ -19,11 +19,12 @@ Loop while you are playing playing
 					Restart loop
 				Else 
 					Exit the program
-				
-			Enemy action is a random one
-			Loop while enemy action choice is already filled
-	If Enemy actions choice is already filled
-		Enemy action is a new one
+		If slots have no empty ones
+			Display you tied
+	Enemy action is a random one
+	loop while enemy action choice is already filled
+		If Enemy actions choice is already filled
+			Enemy action is a new one
 
 	If the enemy has three in a row #With the later function
 		Player choice Input you have lost do you want to play again
@@ -31,6 +32,10 @@ Loop while you are playing playing
 					Restart loop
 				Else 
 					Exit the program
+	If slots have no empty ones
+			Display you tied
+
+	
 
 
 #This would be a function

@@ -254,6 +254,7 @@ def wheelgame():
 
     print(f"You have {money} dollars")
     bet()
+    bet_location = input("What color do you want to bet on (red black green)")
 
     wheelspin = random.randint(1,101)
     wheelcolor = ""
