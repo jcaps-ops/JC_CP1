@@ -1,0 +1,49 @@
+#Jc 2nd 
+
+Store the different slots states being all empty
+Loop while you are playing playing
+Loops run 3 
+			
+Loop run 3
+		Display slot 1 of this row
+				Display slot 2 of this row
+				Display slot 3 of this row
+			Indent
+		Input player action (which slot do you want to change)
+		Based on player action change slot value
+		Loop while player action choice is already filled
+			Display sorry that action is already done
+			Player action Input (what slot do you want to change)  
+
+		If player has three in a row
+			Players choice Input  you have won do you want to play again
+			If player choice is equal to yes
+				Restart loop
+			Else 
+				Exit the program
+			
+		Enemy action is a random one
+		Loop while enemy action choice is already filled
+If Enemy actions choice is already filled
+	Enemy action is a new one
+
+If the enemy has three in a row
+	Player choice Input you have lost do you want to play again
+			If player choice is equal to yes
+				Restart loop
+			Else 
+				Exit the program
+
+
+#This would be a function			
+The checking for three in a row
+Loop for each different slot choice
+	Check if it even can go vertical(1,2,3)
+		Check if slot vertically goes down by checking the state of the one on a plus 3 and plus six index
+	Check if it can even go horizontal (slots 1,4,7)
+		Check for horizontal by checking of the states of values +1 +2 index
+	Check if it can even go diagonal forawrd(slots 1)
+		Check for diagonal checking of the states of the value are the same as the ones with the index of  +4 +8
+	check if it even can go diagonal backwards(slots 3)
+		check for diagonal by checking the value of the indexs +2 and +4
+Do this for slots 1,4,7 then slots 2, 3 
