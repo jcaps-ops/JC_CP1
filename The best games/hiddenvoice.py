@@ -9,16 +9,18 @@ def tickratetimers(x):
         y += 1
     print("Tick timer")
 
-def clock():
-    global tickrate
+def clock(tickrate):
     tickrateinput = input("What speed would you like to do(f, m, s)")
     if tickrateinput == "f":
         tickrate = 5
     elif tickrateinput == "m":
         tickrate = 10
     elif tickrateinput == "s":
-        tickrateinput = 15
+        tickrate = 15
+    return tickrate
 while True:
     tickratetimers(tickrate)
     playeraction = input("What would you like to do")
+    if playeraction == "clock":
+        tickrate = clock(tickrate)
 
