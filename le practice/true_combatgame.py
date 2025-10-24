@@ -25,36 +25,72 @@ def player(php,pa,pd,mhp,turntimer):
     turntimer = 1
     return(php,pa,pd,mhp,turntimer)
 
-def monster(php,pd,ma):
+def monster(php,pd,ma,turntimer):
     php -= ma - pd
     turntimer = 0
-    return(php,turntimer)
+    return(php,pd,ma,turntimer)
     
-
 
 plyclassoption = input("What class do you want to play (1,warror 2,mage 3,tank)")
 if plyclassoption == "1":
     php = 30
+    print(f" you have {php} health")
     pa = 10
+    print(f"you have {pa} attack")
     pd = 3
+    print(f"You have {pd} defence")
 if plyclassoption == "2":
     php = 30
+    print(f" you have {php} health")
     pa = 15
+    print(f"you have {pa} attack")
     pd = 1
+    print(f"You have {pd} defence")
 if plyclassoption == "3":
     php = 40
+    print(f" you have {php} health")
     pa = 10
+    print(f"you have {pa} attack")
     pd = 1
+    print(f"You have {pd} defence")
 
 rand = random.randrange(1,2)
 if rand == 1:
     turntimer = 0
-    playerstats = [player(php,pa,pd,mhp)]
+    
+    playerstats = player(php,pa,pd,mhp,turntimer)
+    php = playerstats[0]
+    pa = playerstats[1]
+    pd = playerstats[2]
+    mhp = playerstats[3]
+    turntimer = playerstats[4]
+
     
 else:
     turntimer = 1
-    monster(php,pd,ma)
+    monsterstats = monster(php,pd,ma,turntimer)
+    php = monsterstats[0]
+    pg = monsterstats[1]
+    ma = monsterstats[2]
+    turntimer[3]
 
+while php > 0 or mhp > 0:
+    if turntimer == 1:
+        turntimer = 1
+        monsterstats = monster(php,pd,ma,turntimer)
+        print(monsterstats)
+        php = monsterstats[0]
+        pg = monsterstats[1]
+        ma = monsterstats[2]
+        turntimer = monsterstats[3]
+        print(f"you have {php} health left")
+    if turntimer == 0:
+        playerstats = player(php,pa,pd,mhp,turntimer)
+        php = playerstats[0]
+        pa = playerstats[1]
+        pd = playerstats[2]
+        mhp = playerstats[3]
+        turntimer = playerstats[4]
 
 
 
