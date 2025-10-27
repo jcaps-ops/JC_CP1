@@ -67,18 +67,20 @@ if rand == 1:
 
     
 else:
+    print("The monster attacks")
     turntimer = 1
     monsterstats = monster(php,pd,ma,turntimer)
     php = monsterstats[0]
     pg = monsterstats[1]
     ma = monsterstats[2]
     turntimer[3]
+    print(f"you have {php} health left")
 
 while php > 0 or mhp > 0:
     if turntimer == 1:
         turntimer = 1
+        print("The monster attacks")
         monsterstats = monster(php,pd,ma,turntimer)
-        print(monsterstats)
         php = monsterstats[0]
         pg = monsterstats[1]
         ma = monsterstats[2]
@@ -91,6 +93,11 @@ while php > 0 or mhp > 0:
         pd = playerstats[2]
         mhp = playerstats[3]
         turntimer = playerstats[4]
+        print(f"The monster has {mhp}")
 
+if php < 1:
+    print("you died")
+if mhp < 1:
+    print("The monster died")
 
 
