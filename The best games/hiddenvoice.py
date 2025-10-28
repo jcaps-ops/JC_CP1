@@ -23,4 +23,5 @@ while True:
     playeraction = input("What would you like to do")
     if playeraction == "clock":
         tickrate = clock(tickrate)
+    
 
