@@ -124,22 +124,23 @@ def can_solve(rows,colums):
     stack = [(0,0)]
 
     while stack:
+        print(stack)
         x, y = stack.pop()
 
-        if x == size  and y == size:
-            return True
+        if x == size and y == size:
+            return(True)
         if (x, y) in visted:
             continue
         visted.add((x,y))
 
-        if x < size and colums[y][x+1] == 0:
+        if x < size and rows[y][x+1] == 0:
             stack.append((x+ 1, y))
         if y < size and colums[y+1][x] == 0:
             stack.append((x, y+1))
-        if x > 0 and colums[y-1][x] == 0:
-            stack.append((x - 1 , y))
-        if y > 0 and colums[y][x-1] == 0:
-            stack.append((x , y - 1))
+        if y > 0 and colums[y-1][x] == 0:
+            stack.append((x , y-1))
+        if x > 0 and rows[y][x-1] == 0:
+            stack.append((x-1 , y))
     
     return False
 # Sets up the randomizers
@@ -169,6 +170,7 @@ while issolvable == False:
     turncounter += 1
     if solvable == True:
         print(turncounter)
+        print(solvable)
         issolvable = True
 
 print("It can be solved")    
