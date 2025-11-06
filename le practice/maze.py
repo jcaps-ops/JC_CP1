@@ -133,13 +133,13 @@ def can_solve(rows,colums):
             continue
         visted.add((x,y))
 
-        if x < size and rows[y][x+1] == 0:
+        if x < size and colums[y][x+1] == 0:
             stack.append((x+ 1, y))
-        if y < size and colums[y+1][x] == 0:
+        if y < size and rows[y+1][x] == 0:
             stack.append((x, y+1))
-        if y > 0 and colums[y-1][x] == 0:
+        if y > 0 and rows[y-1][x] == 0:
             stack.append((x , y-1))
-        if x > 0 and rows[y][x-1] == 0:
+        if x > 0 and colums[y][x-1] == 0:
             stack.append((x-1 , y))
     
     return False
