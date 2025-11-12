@@ -89,4 +89,17 @@ for x in orderitem.values():
 totalcost = 0.00
 for x in orderitem.values():
     totalcost += x
+istipping = input("Would you like ot tip the staff (Y/N)")
+if istipping == "y" or istipping == "Y":
+    playertip = float(input("What percent would you like to tip"))
+    playertip = playertip * 0.01
+    playertip += 1
+    print(playertip)
+    playertip = totalcost * playertip
+    totalcost += playertip
+    print(f"the you tipped {playertip}")
+print(f"your total before tax is {totalcost} dollars")
+tax = 1.47
+tax = totalcost * tax
+totalcost += tax
 print(f"your total is {totalcost} dollars")
