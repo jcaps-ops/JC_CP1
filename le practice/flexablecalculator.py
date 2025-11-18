@@ -1,23 +1,29 @@
 #jc 2nd flexable calculator
 
-def calc(*values):
-    total = 0
-    for x in values[0]:
-        x = int(x)
-        total += x
-    totalsum = sum(values[0])
-    return(values[0])
+def calc(want, *numbers):
+   if want == "1":
+       revalue = sum(numbers[0])
+   if want == "2":
+       valuetotal = sum(numbers[0])
+       revalue = valuetotal/ len(numbers[0])
+   return revalue
+
+def wants():
+    playerinput = input("Which of these do you want to do (1 -sum 2-avarge 3-max 4-min 5-product)")
+    return playerinput
 
 
-nums = list(input("test"))
-for x in nums:
-    print(x)
-    i = nums.index(x)
-    if x == " " or x == ",":
-        nums.pop(i)
-    else:
-        int(x)
+testlist = []
+while True:
+    numimput = input("what number to add(N to stop)")
+    #isnumeric
+    if numimput.isdigit():
+        numimput = float(numimput)
+        testlist.append(numimput)
+    if numimput == "n":
+        break
 
+print(testlist)
+plywants = wants()
 
-print(nums)
-print(calc(nums))
+print(calc(plywants,testlist))
