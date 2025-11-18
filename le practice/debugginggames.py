@@ -34,3 +34,5 @@ def start_game():
         continue
     print("Game Over. Thanks for playing!")
 start_game()
+
+print("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
