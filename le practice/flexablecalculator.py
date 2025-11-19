@@ -35,6 +35,7 @@ while True:
     if numimput == "n":
         break
 #Call a function to do the calculation 
+print(testlist)
 plywants = wants()
 
 #Display the output of the user

@@ -1,1 +1,1 @@
-isdecimal
+isnumeric(
