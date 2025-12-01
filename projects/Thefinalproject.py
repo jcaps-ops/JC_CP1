@@ -1,14 +1,15 @@
 #Jc 2nd final project
 
 #def function combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spell list,mn)
+#store firstturn as true
 #if ps > ms:
 #turn = p
 #else
 #turn = m
 #while fighting
-    #if turn = p:
+    #if turn == p:
         #while turn
-            #input player action between 1 and 2
+            #input player action between 1 and 2 to select basic actions or magic
             #if player action == 1:
                 #list player options between basic attacks,defnse and speed boost,and sword swipe via 1-4 options
                 #if player action == 1:
@@ -62,12 +63,121 @@
                 #if ma = 1
                     #damage = 2-6 
                     #set damage as physical
-                    #display the cultist stabed you at you
+                    #display the cultist stabed you
                 #if ma = 2
                     #damage = 3-5 
                     #set damage as magical
-                    #display the cultist used a mental attack on you
-        
+                    #display the cultist used a magicak attack on you
+        #if mn == Falsehoods
+            #if first turn == true
+                #set reality stat = 100
+            #ma = 1-reality stat
+            #if ma < 60
+                #damage = 3-5 
+                #realaity stat - 5
+                #set damage as magical
+                #display the Falsehood used a magical attack on you
+            #elif ma < 70
+                #damage = 2-6 
+                #realaity stat - 5
+                #set damage as magical
+                #display the hoodFalse used a attack magicak on you
+            #elif ma > 80
+                #damage = 1-8
+                #realaity stat - 5
+                #set damage as magical
+                #display  used attack the on you magical Falsehood a
+            #elif ma > 90
+                #damage = 0-12
+                #realaity stat - 5
+                #set damage as magical
+                #display warping can you be you longer Reality no the around out make world seems to as
+            #else
+                #damage = 0-15
+                #realaity stat - 5
+                #set damage as magical
+                #display the and all as and nothing makes non of as laws hear nature warps work turns directions you existant making crazy of sense Nothing around laughter beings 
+            #if mn == lord of change
+                #if first turn == true
+                    #flop = false
+                    #grand stats = 0
+                #if flop == false
+                    #mmd = 999 
+                    #md = 1 - grand stats
+                    #ma = 1-3
+                    #if ma = 1
+                        #damage = 1-8 
+                        #set damage as physical
+                        #display the Lord of change stikes at you
+                    #if ma = 2
+                        #damage = 0-20
+                        #set damage as physical
+                        #display the Lord of change two heads bite you
+                    #if ma = 3
+                        #mhp += 1-12
+                        #grand stats += 2
+                        #display the Lord of change speaks of the past weakening it to the future
+                    #flop = true
+                #else
+                    #md = 999 
+                    #mmd = 1 - grand stats
+                    #ma = 1-3
+                    #if ma = 1
+                        #damage = 1-8 
+                        #set damage as magical
+                        #display the Lord of change casts arcare secrets at you
+                    #if ma = 2
+                        #damage = 0-10
+                        #pmd += 1
+                        #pd -= 1
+                        #set damage as magical
+                        #display the Lord of change two heads speaks of knowladge out of your comprenction 
+                    #if ma = 3
+                        #php += 3
+                        #grand stats -= 4
+                        #display the Lord of change speaks of the future weakening it to the past
+                    #flop = false
+    #if turn == p
+        #if attack type == magical
+            #mhp -= damage - mmd
+        #else
+            #mhp -= damage - md
+        #turn = m
+    #else
+        #if attack type == magical
+            #php -= damage - pmd
+        #else
+            #php -= damage - pd
+        #turn = p
+    #if php >= 0
+        #end game
+    #elif mhp >= 0
+        #Break the combat and return php
+
+#define function movement(room, player stat list)
+    #if room == te
+        #display As you arrive to the city of altdorf
+        #sleep for 0.1 seconds   #This point expect after all lines of display is a sleep for 0.1 seconds i refuse to write it 20 times
+        #display You look around the larger village 
+        #display And find it empty with no life around
+        #display There are two places which you could go to a local home or the towns mayoral hall
+        #While true
+            #player move = input(1 for a local home or 2 for the mayors hall)
+            # players move == 1:
+                #room = lh
+                #return room
+            # players move == 2:
+                #room = mh
+                #return room
+    #if room == lh
+        #display you go the local home
+        #display You look around the Home and find a suspicus bed and desk
+            #player move = input(1 for the bed or 2 for desk)
+            # players move == 1:
+                #room = rt
+                #return room
+            # players move == 2:
+                #
 
 #
 
