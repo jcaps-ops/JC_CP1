@@ -1,6 +1,6 @@
 #Jc 2nd final project
 
-#def function combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spell list,mn)
+#def function combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spell list,mn,player items)
 #store firstturn as true
 #if ps > ms:
 #turn = p
@@ -154,7 +154,8 @@
     #elif mhp >= 0
         #Break the combat and return php
 
-#define function movement(room, player stat list)
+#define function movement(room,looted rooms,finished rooms)
+    #action promt = 0
     #if room == te
         #display As you arrive to the city of altdorf
         #sleep for 0.1 seconds   #This point expect after all lines of display is a sleep for 0.1 seconds i refuse to write it 20 times
@@ -165,19 +166,40 @@
             #player move = input(1 for a local home or 2 for the mayors hall)
             # players move == 1:
                 #room = lh
-                #return room
+                #return room,room,looted rooms,finished rooms,action promt
             # players move == 2:
                 #room = mh
-                #return room
-    #if room == lh
-        #display you go the local home
-        #display You look around the Home and find a suspicus bed and desk
-            #player move = input(1 for the bed or 2 for desk)
-            # players move == 1:
-                #room = rt
-                #return room
-            # players move == 2:
-                #
+                #return room,room,looted rooms,finished rooms,action promt
+    #if room == lh:
+        #if lh not in looted rooms:
+            #display you go to the local home
+            #display You look around the Home and find a suspicus bed and desk
+                #player move = input(1 for the bed or 2 for desk, or 3 to return to the town entrance)
+                # players move == 1:
+                    #room = rt
+                    #return room,room,looted rooms,finished rooms,action promt
+                # players move == 2:
+                    #looted rooms append lh
+                    #Action prompt = true
+                    ##return room,room,looted rooms,finished rooms,action promt
+                #players move == 3:
+                    #room = te
+                    #return room,room,looted rooms,finished rooms,action promt
+        #else
+             #display you go to the local home
+            #display You look around the Home and find a suspicus bed
+                #player move = input(1 for the bed or 2 to return to the town entrance)
+                # players move == 1:
+                    #room = rt
+                    #return room,room,looted rooms,finished rooms,action promt
+                #players move == 2:
+                    #room = te
+                    #return room,room,looted rooms,finished rooms,action promt
+    #if room == rte:
+        #if rt not in finished rooms
+            #action promt = true
+
+
 
 #
 
