@@ -155,7 +155,7 @@
         #Break the combat and return php
 
 #define function movement(room,looted rooms,finished rooms)
-    #action promt = 0
+    #action promt = false
     #if room == te
         #display As you arrive to the city of altdorf
         #sleep for 0.1 seconds   #This point expect after all lines of display is a sleep for 0.1 seconds i refuse to write it 20 times
@@ -195,9 +195,69 @@
                 #players move == 2:
                     #room = te
                     #return room,room,looted rooms,finished rooms,action promt
-    #if room == rte:
-        #if rt not in finished rooms
+    #if room == rt:
+        #if rt not in finished rooms:
+            #display you find a tunnel under the bed 
+            #display as you enter into the tunnel you look around 
+            #display when you encounter a filthy ratmen
+            #display It looks a you and squeks out Intruder-thing in tunnels! Quick-quick, get-capture that man-thing!
+            #display he attacks you 
+            #action prompt = true
+            #return room,room,looted rooms,finished rooms,action promt
+        #else
+            #display you go to empty tunnel where no movement can be seen 
+                #player move = input(1 for the entrace or 2 or go further into the tunnel)
+                # players move == 1:
+                    #room = lh
+                    #return room,room,looted rooms,finished rooms,action promt
+                #players move == 2:
+                    #room = uc
+                    #return room,room,looted rooms,finished rooms,action promt
+    #if room == uc 
+        #if uc not in looted rooms:
+            #display as you enter into the large cavern 
+            #you see a large ratman city filled with glowing green stones radiating a strange light
+            #With hundred of ratmen scowering around
+            #Sqeaking sentances like Intruder-thing found-detected! Find-search them, yes-yes! Must have sneak-creeped into undercity-place!
+            #You see two tunnels and a sign writen into a script you can read saying "Fight-kill-ring! Yes-yes!"
+            #player move = input(1 for the first tunnel or 2 or go into the second tunnel or 3 to enter into the building with a sign)
+                #if players move == 1:
+                    #room = ic
+                    #return room,room,looted rooms,finished rooms,action promt
+                #if players move == 2:
+                    #room = icb
+                    #return room,room,looted rooms,finished rooms,action promt
+                #If player move == 3:
+                    #room = fr1
+                    #return room,room,looted rooms,finished rooms,action promt
+    #if room == fr1
+        #display A ratman approches you with out ill intent 
+        #He dispite squeaking it out he manages to sound somewhat elegent says
+        #"Yes-yes, greetings, new man-thing! I am owner-master of this place-hole! You want to fight-fight in ring-cage? We pay-pay you, yes!"
+             #player move = input(1 to enter into the room or 2 to return outside)
+                #if players move == 1:
+                    #room = fr2
+                    #return room,room,looted rooms,finished rooms,action promt
+                #if players move == 2:
+                    #room = uc
+                    #return room,room,looted rooms,finished rooms,action promt
+    #if room == fr2:
+        #you enter into a dingy looking fighting ring
+        #player move = input(1 to enter, 2 to leave) 
+        #if players move == 1:
             #action promt = true
+            #return room,room,looted rooms,finished rooms,action promt
+        #if players move == 2:
+            #room = uc
+            #return room,room,looted rooms,finished rooms,action promt
+    #if room == mh:
+        #You enter into the mayors hall and see it empty
+        #Its almost like you could hear a prevasive silence
+
+
+
+
+
 
 
 
