@@ -18,6 +18,8 @@
                         #Damage = radnom between 3-5 damage
                     #if sword == sword:
                         #Damage = radnom between 5-6 damage
+                    #if sword == "warpstone sword"
+                        #Damage = random between 4-9 damage
                     #set as physical damage
                 #elif player action == 2:
                     #increase defense for the battle
@@ -222,7 +224,7 @@
             #You see two tunnels and a sign writen into a script you can read saying "Fight-kill-ring! Yes-yes!"
             #player move = input(1 for the first tunnel or 2 or go into the second tunnel or 3 to enter into the building with a sign)
                 #if players move == 1:
-                    #room = ic
+                    #room = ic2
                     #return room,room,looted rooms,finished rooms,action promt
                 #if players move == 2:
                     #room = icb
@@ -253,6 +255,147 @@
     #if room == mh:
         #You enter into the mayors hall and see it empty
         #Its almost like you could hear a prevasive silence
+        #There is no movement,no breath,no sounds of speech  
+        #there lies a note on the desk at the end of hall that reads
+        #To the right honorable witch hunter may you investigate the imperial collage
+        #As I heard reports of people going missing around there
+        #you finish reading the note and look up to see a open door to the armory
+        #player move = input(1 - leave for the imperial collage, 2 go to the armory)
+        #if players move == 1:
+            #room == arm
+            #return room,room,looted rooms,finished rooms,action promt
+        #if players move == 2:
+            #room = ic1
+            #return room,room,looted rooms,finished rooms,action promt
+    #if room = arm:
+        #print You enter into the ajar door to the armory and see a man
+        #Ah stop there he shouts almost like a screech
+        #He prooceds to say oh sorry there witch hunter I thought you were one of those cultists
+        #Oh me i am the captian of the guard he says
+        #I run a little shop here would you like to buy something
+        #player move = input(1 to go to his shop, 2 to exit it) 
+        #if players move == 1:
+            #Action promt = 1
+            #return room,room,looted rooms,finished rooms,action promt
+        #if players move == 2:
+            #room = mh
+            #return room,room,looted rooms,finished rooms,action promt
+    #if room = ic1 and not in looted rooms:
+        #you enter into the hall of the imperial collage
+        #First the smell of blood and gunpowerd hits your nose
+        #you see the corpses of several guards litteraling the hall 
+        #One of them holds a small book
+        #You grab it
+        #Action promt = 1
+        #Then a figure leaps out at you
+        #You manage to dodge but get striked in the stomach
+        #Hp -= 3
+        #The figure wears a massive blue robe
+        #return room,room,looted rooms,finished rooms,action promt
+    #elif room = ic1
+        #you enter into the hall of the imperial collage
+        #the smell of blood and gunpowerd is perasive 
+        #you see the corpses of several guards moved and damaged from your fight
+        #player move = input(1 to go deeper into the imperial collage, 2 to exit it into the mayors hall) 
+        #if players move == 1:
+            #rooms = ic2
+            #return room,room,looted rooms,finished rooms,action promt
+        #if players move == 2:
+            #room = mh
+            #return room,room,looted rooms,finished rooms,action promt
+    #if room = ic2 and not in looted rooms:
+        #you hear the sound of battling running through your ear
+        #When a grating squeak sounds "Charge-rush rats-things at cultist-thing! Kill-kill them yes-yes!"
+        #You see ratling men numbering in the 50-60s charging at 15 men in blue robes
+        #When a larger ratmen whereing proper armor and a man whereing a ornate blue robe
+        #First the ratmen squeaks That-there is cultist-thing, yes-yes! Their cult-thing,
+        # you - you help-aid I. I need-crave you kill-slay them all, yes-yes! Kill-kill! Fine sword-blade is yours-own then, if you do-do!
+        #Then suddenly the cloaked man speaks
+        #Ah why would you help kill me when a filthy ratmen like him roam the halls
+        #So kill them and a magic tomb is yours
+        #player move = input(1 To agree to the ratmen, 2 to work with the man in blue robes) 
+        #if players move == 1:
+            #action promt = 1
+            #return room,room,looted rooms,finished rooms,action promt
+        #if players move == 2:
+            #action promt = 2
+            #return room,room,looted rooms,finished rooms,action promt\
+    #eliif room = ic2
+        #Then hall is litted with corpses of ratmen and corpses of blue robed men
+        #you see a tunnel and A door to the basement 
+        #player move = input(1 to go to the tunnel, 2 to go to the basement, 3 to go to the entrance of imperial collage) 
+        #if players move == 1:
+            #rooms = uc
+            #return room,room,looted rooms,finished rooms,action promt
+        #if players move == 2:
+            #room = icb
+            #return room,room,looted rooms,finished rooms,action promt
+          #if players move == 3:
+            #room = ic1
+            #return room,room,looted rooms,finished rooms,action promt
+    #if room = icb and not in looted rooms:
+        #As you enter into what looks like the basement of an imperial collage
+        #You see massive stone pilliars engraved with runic symbols
+        #Which glows blue
+        #A massive headace hits your skull
+        #You see figures
+        #Your vision becomes blury 
+        #It feels as if something breaks
+        """print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%@@%%%%@@@@@@@@%@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@%%%%@@@@@@@@@@@@@%%%%%%######%%%%#**********#
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%##+-:............................
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%####*##*+:::...........
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#+=-........
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*=:....
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#=-.
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%##*+-::....:::.............:+=-:::------+*#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%=............................................:=*#%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+...........................................::-=+*##%%%#%%%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+............................:...::-=+**#######%%%%%%%###*###%%%%@@@@@@@@@@@@@@@@@@@@@@@@
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=..   .....=@+.............-+**###**###%######%%%%@@@@@%%%%####%%%%%%%%%%%@@@@@@@@@@@@@@@
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=...  ....:%@%.............::-==+====+******####%%%%%%@@@@@@%%%%###%%%%%%%%@@@@@@@@@@@@@@
+print("@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@=...  ...:%@@@+............::::----:---===++++****###%%%%@@@@@@@%+-+#%%%%%%%@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-...  ...*@@@@@=..... ...:::::::--:::-----===++++***###%%@@@@@@@@@%*=*##%%%%##%%%%@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%-...  .:%@@@@@@@=.... ...::::::------------==++******###%@@@@@@@@@@@%+-=*%%%%%##%%@@@@@@@
+@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%-... ..#@@@@@@@@@%:.. ..:::::::------------=++*****###%%%@@@@@@@@@@@@@%+=++*#####%%%%@@@@
+@@@@@@@@@@@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%=.....-@@@@@@@@@@@*.....:::::::::--=------=++***###%%%%%%@@@@@@@@@@@@@@*:..:-*#####%%%@@@
+@@@@@@@@@@@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%=.  ..*@@@@@@@@*..:*....::::::---===----=++++**##%%%%%%%%@@@@@@@@@@@@@@*:...:+######%%@@@
+@@@@@@@@@@@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%=.....+++%@@@@@*....+-:.:-:::-=++**+=---=++++*########%%%@@@@@@@@@@@@@@*:...:=#####%%%@@@
+@@@@@@@@@@@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%-.. .:=--#@@@@@+.....+*+*=-:--+**##**++++**############%%%%%%@@@@@@@@@@#:...:=##%%%%%%@@@
+@@@@@@@@@@@@%#@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@%-....:::=@@@@@@#.. ...-##*=--=+*##********##############%%%%%%@@@@@@@@@#:...:=##%%%%%@@@@
+@@@@@@@@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%-.  .....#@@@@@#..   ...+++==+#%%%########%%#####%%####%%%@@@@@@@@@@@@@#:...:+#%@@@@@@@@@
+@@@@@@@@@@@%##@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=. .....:%@@@@@%:.    ..+#*==*#%@@@@@%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#-...-#@@@@@@@@@@@
+@@@@@@@@@@@%#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+... ...-@#:.:#%+..  ...*#*++*%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#-...-#@@@@@@@@@@@
+@@@@@@@@@@@%#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#:......-%:....#*..   .:#%#+++#%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#-...=%@@@@@@@@@@@
+@@@@@@@@@@@%#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#.......*=.....-*..   .:#%#+==*%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%-...=%@@@@@@@@@@@
+@@@@@@@@@@@%#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%.......*.... .:*......-##**++*%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%-...=%@@@@@@@@@@@
+@@@@@@@@@@@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#:.....:-.. ....+:.....=%###**#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%-...=%@@@@@@@@@@@
+@@@@@@@@@@@%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%-.....-:.......-=....:*%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%-...+@@@@@@@@@@@@
+@@@@@@@@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%=....:#-......:+#-:.:+%@@%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*-=+%@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*++#%%#=::--=#%@%##%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#--+%@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%###@@@%######%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#==*%@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%#**#%@@#+---::=#@%+:......:::--==+*##%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#+=+%@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%##****#%@@%*-::::-+#%@#+-:::..........::--=+**####%%%%%%%%@@@@@@@@@@@@@@@@@%+*#%@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%######*****##%%%#*+++++**##%%###**++=--::::.:::::::--==++++******##%%%@@@@@@@@@@@%*+#@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%#####%%%%######%%%################%%%%%###**++=---------============++**###%%%%@@@@@%%#%@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%########**++++++=-----===+++***####%@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%##**+====+++++++++*#######%%%%%%@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%##***+==+**########***###%%%%%%%%@@@%%%
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%%%%%%%%%%%%%@@@%%%%%%%%%%%%%%%%%%%%%%%@@@@@%%%%%%%%%%##**++*###%%%%##%%#%%%%%%%%%@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%@@@@@@@@@%%######%%%%%%%%%%%#%%%%
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%##%%%%%%%%
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+=.                                             ...                               ..................         ...........................
+=.                                        .-.  ...     ..  .-           ..:......::.:-::.::---.                                        
+=.                                      .:-===-=-:=-=---:-=-==.::+-+-=::..=--+-+-=:::=::==:=.-.                                        
+=.                                                                       ..  ....           ...                                        ")"""
+
+
+
 
 
 
