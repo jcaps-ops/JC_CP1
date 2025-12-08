@@ -4,16 +4,19 @@ import time
 import random
 
 def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems,sword):
-    sword = ""
+    sword = playeritems[0]
+    firstturncounter = 0
+    activeturncounter = 0
     firstturn = True
     if ps > ms:
         turn = "p"
     else:
         turn = "m"
     fighting = True
+    active_turn = True
     while fighting == True:
         if turn == "p":
-            while turn:
+            while active_turn:
                 playeraction = input("Would you like to use a basic move:1 or a magical move:2")
                 playeraction = int(playeraction )
                 if playeraction == 1:
@@ -23,9 +26,9 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems,sword):
                         #Attack doing the sword damage
                         if sword == "weak sword":
                             Damage = random.randint(3,5)
-                        if sword == "sword":
+                        elif sword == "sword":
                             Damage = random.randint(5,6)
-                        if sword == "warpstone sword":
+                        elif sword == "warpstone sword":
                             Damage = random.randint(4,9)
                         attacktype = "physical"
                     elif playeraction == 2:
@@ -34,136 +37,161 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems,sword):
                     elif playeraction == 3:
                         #increase speed for the battle
                         ps += 2
-                    elif playeraction == 4 and:
-                        #increase speed for the battle
-                        #Damage = radnom between 4-8 damage
-                        #ps -= 1
-                    else
-                        #display that is not an option
-                        #Continue to the top 
-                #elif player action == 2:
+                    elif playeraction == 4 and "flintlock" in playeritems:
+                        ps -=1 
+                        Damage = random.randrange(4-8)
+                        attacktype = "physical"
+                    
+                    elif playeraction == 4 and not "flintlock" in playeritems:
+                        print("You do not own the flintlock") 
+                        continue
+                    else:
+                        print("that is not an option") 
+                        continue
+                         
+                elif playeraction == 2:
                     #Then list players options asking play to give the spells name
+                    spell_input = input("What spell would you like to use if you have learned them")
                     #The the player imput for spell
-                    #if spell input == heal and has this is in spell list :
-                        #php adds 3
-                        #mana subtract 2
-                    #elif spell input == fire blade and has this is in spell list :
-                        #Damage = random between 4-6 damage
-                        #mana sumbrtact 2
-                        #set as magical damage
-                    #elif spell input == ice spike and has this is in spell list :
-                        #Damage = random between 7-8 damage
-                        #mana subrtact 4
-                        #set as magical damage
-                    #else
-                        #display that is not an option
-                        #Continue to the top 
-                #else
-                    #display that is not an option
-                    #Continue to the top 
-                #turn is false
-        #else
-            #if mn == ratman
-                    #damage = 1-3 
-                    #set damage as physical
-                    #display the ratman swiped at you
-            #if mn == cultist
-                    #ma = 1-2
-                    #if ma = 1
-                        #damage = 2-6 
-                        #set damage as physical
-                        #display the cultist stabed you
-                    #if ma = 2
-                        #damage = 3-5 
-                        #set damage as magical
-                        #display the cultist used a magicak attack on you
-            #if mn == Falsehoods
-                #if first turn == true
-                    #set reality stat = 100
-                #ma = 1-reality stat
-                #if ma < 60
-                    #damage = 3-5 
-                    #realaity stat - 5
-                    #set damage as magical
-                    #display the Falsehood used a magical attack on you
-                #elif ma < 70
-                    #damage = 2-6 
-                    #realaity stat - 5
-                    #set damage as magical
-                    #display the hoodFalse used a attack magicak on you
-                #elif ma > 80
-                    #damage = 1-8
-                    #realaity stat - 5
-                    #set damage as magical
-                    #display  used attack the on you magical Falsehood a
-                #elif ma > 90
-                    #damage = 0-12
-                    #realaity stat - 5
-                    #set damage as magical
-                    #display warping can you be you longer Reality no the around out make world seems to as
-                #else
-                    #damage = 0-15
-                    #realaity stat - 5
-                    #set damage as magical
-                    #display the and all as and nothing makes non of as laws hear nature warps work turns directions you existant making crazy of sense Nothing around laughter beings 
-                #if mn == lord of change
-                    #if first turn == true
-                        #flop = false
-                        #grand stats = 0
-                    #if flop == false
-                        #mmd = 999 
-                        #md = 1 - grand stats
-                        #ma = 1-3
-                        #if ma = 1
-                            #damage = 1-8 
-                            #set damage as physical
-                            #display the Lord of change stikes at you
-                        #if ma = 2
-                            #damage = 0-20
-                            #set damage as physical
-                            #display the Lord of change two heads bite you
-                        #if ma = 3
-                            #mhp += 1-12
-                            #grand stats += 2
+                    if spell_input == 1 and "heal" in spelllist :
+                        php += 3
+                        pm -= 2
+                    elif spell_input == 2 and "fire blade " in spelllist:
+                        Damage = random.randrange(4-8)
+                        pm -= 2
+                        attacktype = "magical"
+                    elif spell_input == 3 and "ice spear" in spelllist :
+                        Damage = random.randint(7,8)
+                        pm -= 4
+                        attacktype = "magical"
+                    else:
+                        print("that is not an option") 
+                        continue
+                active_turn = False
+        else:
+            if mn == "ratman":
+                    damage = random.randrange(1,4)
+                    attacktype = "physical"
+                    print("the ratman swiped at you") 
+            if mn == "cultist":
+                    ma = random.randrange(1,2)
+                    if ma == 1:
+                        damage = random.randrange(2,6)
+                        attacktype = "physical"
+                        print("the cultist stabed you")
+                    if ma == 2:
+                        damage = random.randrange(3,5)
+                        attacktype = "magical"
+                        print(" the cultist used a magicak attack on you")
+            if mn == "Falsehoods":
+                if firstturn == True:
+                    reality_stat = 100
+                ma = random.randrange(1,reality_stat)
+                if ma < 60:
+                    damage = random.randrange(3,5)
+                    reality_stat -= 5
+                    attacktype = "magical"
+                    print("the Falsehood used a magicak attack on you")
+                elif ma < 70:
+                    damage = random.randrange(2,6)
+                    reality_stat -= 5
+                    attacktype = "magical"
+                    print("the hoodFalse used a attack magicak on you")
+                elif ma < 80:
+                    damage = random.randrange(1,8)
+                    reality_stat -= 5
+                    attacktype = "magical"
+                    print("used attack the on you magical Falsehood a")
+                elif ma < 90:
+                    damage = random.randrange(0,12)
+                    reality_stat -= 5
+                    attacktype = "magical"
+                    print("warping can you be you longer Reality no the around out make world seems to as")
+                else:
+                    damage = random.randrange(0,15)
+                    reality_stat -= 5
+                    attacktype = "magical"
+                    print("the and all as and nothing makes non of as laws hear nature warps work turns directions you existant making crazy of sense Nothing around laughter beings")
+                if mn == "lord of change":
+                    if firstturn == True:
+                        flop = False
+                        grandstats = 0
+                    if flop == False:
+                        mmd = 999 
+                        md = 1 - grandstats
+                        ma = random.randrange(1,3)
+                        if ma == 1:
+                            damage = random.randrange(1,8)
+                            attacktype = "physical"
+                            print("the Lord of change stikes at you") 
+                        if ma == 2:
+                            damage = random.randrange(0,20)
+                            attacktype = "physical"
+                            print("the Lord of change two heads bites you") 
+                        if ma == 3:
+                            mhp += random.randrange(1,12)
+                            grandstats += 5
+                            print("the Lord of change speaks of the past weakening it to the future")
                             #display the Lord of change speaks of the past weakening it to the future
-                        #flop = true
-                    #else
-                        #md = 999 
-                        #mmd = 1 - grand stats
-                        #ma = 1-3
-                        #if ma = 1
+                        flop == True
+                    else:
+                        md = 999 
+                        mmd = 1 - grandstats
+                        ma = random.randrange(1,3)
+                        if ma == 1:
+                            damage = random.randrange(1,8)
+                            attacktype = "magical"
+                            print("the Lord of change casts arcare secrets at you")
                             #damage = 1-8 
                             #set damage as magical
                             #display the Lord of change casts arcare secrets at you
-                        #if ma = 2
-                            #damage = 0-10
-                            #pmd += 1
-                            #pd -= 1
+                        if ma == 2:
+                            damage = random.randrange(0,10)
+                            attacktype = "magical"
+                            print("display the Lord of change two heads speaks of knowladge out of your comprenction ")
+                            pmd += 3
+                            pd -= 1
                             #set damage as magical
                             #display the Lord of change two heads speaks of knowladge out of your comprenction 
-                        #if ma = 3
-                            #php += 3
-                            #grand stats -= 4
+                        if ma == 3:
+                            php += 3
+                            grandstats -= 2
+                            print("the Lord of change speaks of the future weakening it to the past")
                             #display the Lord of change speaks of the future weakening it to the past
-                        #flop = false
-        #if turn == p
-            #if attack type == magical
-                #mhp -= damage - mmd
-            #else
-                #mhp -= damage - md
-            #turn = m
-        #else
-            #if attack type == magical
-                #php -= damage - pmd
-            #else
-                #php -= damage - pd
-            #turn = p
-        #if php >= 0
-            #end game
-        #elif mhp >= 0
-            #Break the combat and return php
+                        flop = False
+        if turn == "p":
+            if attacktype == "magical":
+                mhp -= damage - mmd
+            else:
+                mhp -= damage - md
+            turn = "m"
+        else:
+            if attacktype == "magical":
+                php -= damage - pmd
+            else:
+                php -= damage - pd
+            turn = "p"
+        if php >= 0:
+            endgame = True
+            return(php,pm,endgame)
+        elif mhp >= 0:
+            endgame = False
+            return(php,pm,endgame)
+        firstturncounter += 1
+        activeturncounter += 1
+        if firstturncounter <= 2:
+            firstturn = True
+        if activeturncounter == 3:
+            activeturncounter = 0
+            firstturn = True
+            if ps > ms:
+                turn = "p"
+            else:
+                turn = "m"
+            
 
-#define function movement(room,looted rooms,finished rooms)
+#define 
+# function movement(room,looted rooms,finished rooms)
     #action promt = false
     #if room == te
         #display As you arrive to the city of altdorf
@@ -565,16 +593,16 @@ def marketbuy(money, itemstobuy, buyingitemscost,marketsize,items):
             if playeranswer == "N":
                 buying == False
             
-    money = 40
-    items = []
-    maketsize = 2
-    itemstobuy = []
-    buyingitemscost = []
+money = 40
+items = []
+maketsize = 2
+itemstobuy = []
+buyingitemscost = []
 
-    marketgoods = randomizemarket1(maketsize,itemstobuy,buyingitemscost)
-    itemstobuy = marketgoods[0]   
-    buyingitemscost = marketgoods[1]
-    marketbuy(money,itemstobuy,buyingitemscost, maketsize,items)        
+marketgoods = randomizemarket1(maketsize,itemstobuy,buyingitemscost)
+itemstobuy = marketgoods[0]   
+buyingitemscost = marketgoods[1]
+marketbuy(money,itemstobuy,buyingitemscost, maketsize,items)        
 
 
 
