@@ -191,144 +191,183 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems,sword):
             
 
 #define 
-# function movement(room,looted rooms,finished rooms)
-    #action promt = false
-    #if room == te
-        #display As you arrive to the city of altdorf
+def  movement(room,looted_rooms,finished_rooms):
+    action_promt = False
+    if room == "te":
+        #display 
+        print("As you arrive to the city of altdorf")
         #sleep for 0.1 seconds   #This point expect after all lines of display is a sleep for 0.1 seconds i refuse to write it 20 times
-        #display You look around the larger village 
-        #display And find it empty with no life around
-        #display There are two places which you could go to a local home or the towns mayoral hall
-        #While true
-            #player move = input(1 for a local home or 2 for the mayors hall)
-            # players move == 1:
-                #room = lh
-                #return room,room,looted rooms,finished rooms,action promt
-            # players move == 2:
-                #room = mh
-                #return room,room,looted rooms,finished rooms,action promt
-    #if room == lh:
-        #if lh not in looted rooms:
-            #display you go to the local home
-            #display You look around the Home and find a suspicus bed and desk
-                #player move = input(1 for the bed or 2 for desk, or 3 to return to the town entrance)
-                # players move == 1:
-                    #room = rt
-                    #return room,room,looted rooms,finished rooms,action promt
-                # players move == 2:
-                    #looted rooms append lh
-                    #Action prompt = true
-                    ##return room,room,looted rooms,finished rooms,action promt
-                #players move == 3:
-                    #room = te
-                    #return room,room,looted rooms,finished rooms,action promt
-        #else
-             #display you go to the local home
-            #display You look around the Home and find a suspicus bed
-                #player move = input(1 for the bed or 2 to return to the town entrance)
-                # players move == 1:
-                    #room = rt
-                    #return room,room,looted rooms,finished rooms,action promt
-                #players move == 2:
-                    #room = te
-                    #return room,room,looted rooms,finished rooms,action promt
-    #if room == rt:
-        #if rt not in finished rooms:
+        #display 
+        print("You look around the larger village") 
+        print("And find it empty with no life around")
+        #display 
+        print("There are two places which you could go to a local home or the towns mayoral hall")
+        while True:
+            player_move = input("1 for a local home or 2 for the mayors hall")
+            if player_move == "1":
+                room = "lh"
+                return (room,looted_rooms,finished_rooms,action_promt)
+            if player_move == "2":
+                room = "mh"
+                return (room,looted_rooms,finished_rooms,action_promt)
+    if room == "lh":
+        if "lh" not in looted_rooms:
+            #display 
+            print("you go to the local home")
+            #display 
+            print("You look around the Home and find a suspicus bed and desk")
+            player_move = input("1 for the bed or 2 for desk, or 3 to return to the town entrance")
+            if player_move == "1":
+                    room = "rt"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+            if player_move == "2":
+                    looted_rooms.append("lh") 
+                    Action_prompt = True
+                    return(room,looted_rooms,finished_rooms,action_promt)
+            if player_move == "3":
+                    room = "te"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+        else:
+             #display 
+            print("you go to the local home")
+            #display 
+            print("You look around the Home and find a suspicus bed")
+            player_move = input("1 for the bed or 2 to return to the town entrance")
+            if player_move == 1:
+                    room = "rt"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+            if player_move == 2:
+                    room = "te"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+    if room == "rt":
+        if "rt" not in finished_rooms:
             #display you find a tunnel under the bed 
+            print("you find a tunnel under the bed")
             #display as you enter into the tunnel you look around 
+            print("as you enter into the tunnel you look around")
             #display when you encounter a filthy ratmen
+            print("when you encounter a filthy ratmen")
             #display It looks a you and squeks out Intruder-thing in tunnels! Quick-quick, get-capture that man-thing!
+            print("It looks a you and squeks out Intruder-thing in tunnels! Quick-quick, get-capture that man-thing!")
             #display he attacks you 
-            #action prompt = true
-            #return room,room,looted rooms,finished rooms,action promt
-        #else
+            print("he attacks you")
+            action_prompt = True
+            return(room,looted_rooms,finished_rooms,action_promt)
+        else:
             #display you go to empty tunnel where no movement can be seen 
-                #player move = input(1 for the entrace or 2 or go further into the tunnel)
-                # players move == 1:
-                    #room = lh
-                    #return room,room,looted rooms,finished rooms,action promt
-                #players move == 2:
-                    #room = uc
-                    #return room,room,looted rooms,finished rooms,action promt
-    #if room == uc 
-        #if uc not in looted rooms:
+            print("you go to empty tunnel where no movement can be seen ")
+            player_move = input("1 for the entrace or 2 or go further into the tunnel")
+            if player_move == 1:
+                    room = "lh"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+            if player_move == 2:
+                    room = "uc"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+    if room == "uc": 
+        if "uc" not in looted_rooms:
             #display as you enter into the large cavern 
+            print("as you enter into the large cavern")
             #you see a large ratman city filled with glowing green stones radiating a strange light
+            print("you see a large ratman city filled with glowing green stones radiating a strange light")
             #With hundred of ratmen scowering around
+            print("With hundred of ratmen scowering around")
             #Sqeaking sentances like Intruder-thing found-detected! Find-search them, yes-yes! Must have sneak-creeped into undercity-place!
+            print("Sqeaking sentances like Intruder-thing found-detected! Find-search them, yes-yes! Must have sneak-creeped into undercity-place!")
             #You see two tunnels and a sign writen into a script you can read saying "Fight-kill-ring! Yes-yes!"
-            #player move = input(1 for the first tunnel or 2 or go into the second tunnel or 3 to enter into the building with a sign)
-                #if players move == 1:
-                    #room = ic2
-                    #return room,room,looted rooms,finished rooms,action promt
-                #if players move == 2:
-                    #room = icb
-                    #return room,room,looted rooms,finished rooms,action promt
-                #If player move == 3:
-                    #room = fr1
-                    #return room,room,looted rooms,finished rooms,action promt
-    #if room == fr1
-        #display A ratman approches you with out ill intent 
+            print("You see two tunnels and a sign writen into a script you can read saying Fight-kill-ring! Yes-yes!")
+            player_move = input("1 for the first tunnel or 2 or go into the second tunnel or 3 to enter into the building with a sign")
+            if player_move == "1":
+                    room = "ic2"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+            if player_move == "2":
+                    room = "icb"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+            if player_move == "3":
+                    room = "fr1"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+                    
+    if room == "fr1":
+        #display A ratman approches you without ill intent 
+        print("A ratman approches you without ill intent ")
         #He dispite squeaking it out he manages to sound somewhat elegent says
+        print("He dispite squeaking it out he manages to sound somewhat elegent says")
         #"Yes-yes, greetings, new man-thing! I am owner-master of this place-hole! You want to fight-fight in ring-cage? We pay-pay you, yes!"
-             #player move = input(1 to enter into the room or 2 to return outside)
-                #if players move == 1:
-                    #room = fr2
-                    #return room,room,looted rooms,finished rooms,action promt
-                #if players move == 2:
-                    #room = uc
-                    #return room,room,looted rooms,finished rooms,action promt
-    #if room == fr2:
+        print("Yes-yes, greetings, new man-thing! I am owner-master of this place-hole! You want to fight-fight in ring-cage? We pay-pay you, yes!")
+        player_move = input("1 to enter into the room or 2 to return outside")
+        if player_move == "1":
+                    room = "fr2"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+        if player_move == "2":
+                    room = "uc"
+                    return(room,looted_rooms,finished_rooms,action_promt)
+    if room == "fr2":
         #you enter into a dingy looking fighting ring
-        #player move = input(1 to enter, 2 to leave) 
-        #if players move == 1:
-            #action promt = true
-            #return room,room,looted rooms,finished rooms,action promt
-        #if players move == 2:
-            #room = uc
-            #return room,room,looted rooms,finished rooms,action promt
-    #if room == mh:
+        print("you enter into a dingy looking fighting ring")
+        player_move = input("1 to enter, 2 to leave") 
+        if player_move == "1":
+            action_promt = True
+            return(room,looted_rooms,finished_rooms,action_promt)
+        if player_move == "2":
+            room = "uc"
+            return(room,looted_rooms,finished_rooms,action_promt)
+    if room == "mh":
+        print("You enter into the mayors hall and see it empty")
         #You enter into the mayors hall and see it empty
+        print("Its almost like you could hear a prevasive silence")
         #Its almost like you could hear a prevasive silence
         #There is no movement,no breath,no sounds of speech  
+        print("There is no movement,no breath,no sounds of speech")
         #there lies a note on the desk at the end of hall that reads
+        print("there lies a note on the desk at the end of hall that reads")
         #To the right honorable witch hunter may you investigate the imperial collage
+        print("To the right honorable witch hunter may you investigate the imperial collage")
         #As I heard reports of people going missing around there
+        print("As I heard reports of people going missing around there")
         #you finish reading the note and look up to see a open door to the armory
-        #player move = input(1 - leave for the imperial collage, 2 go to the armory)
-        #if players move == 1:
-            #room == arm
-            #return room,room,looted rooms,finished rooms,action promt
-        #if players move == 2:
-            #room = ic1
-            #return room,room,looted rooms,finished rooms,action promt
-    #if room = arm:
-        #print You enter into the ajar door to the armory and see a man
-        #Ah stop there he shouts almost like a screech
-        #He prooceds to say oh sorry there witch hunter I thought you were one of those cultists
-        #Oh me i am the captian of the guard he says
-        #I run a little shop here would you like to buy something
-        #player move = input(1 to go to his shop, 2 to exit it) 
-        #if players move == 1:
-            #Action promt = 1
-            #return room,room,looted rooms,finished rooms,action promt
-        #if players move == 2:
-            #room = mh
-            #return room,room,looted rooms,finished rooms,action promt
-    #if room = ic1 and not in looted rooms:
+        print("you finish reading the note and look up to see a open door to the armory")
+        player_move = input("1 - leave for the imperial collage, 2 go to the armory")
+        if player_move == "1":
+            room = "ic1"
+            return(room,looted_rooms,finished_rooms,action_promt)
+        if player_move == "2":
+            room = "arm"
+            return(room,looted_rooms,finished_rooms,action_promt)
+    if room == "rm":
+        print(" You enter into the ajar door to the armory and see a man")
+        print("Ah stop there he shouts almost like a screech")#
+        print("He prooceds to say oh sorry there witch hunter I thought you were one of those cultists")
+        print("Oh me i am the captian of the guard he says")
+        print("I run a little shop here would you like to buy something")
+        player_move = input("1 to go to his shop, 2 to exit it") 
+        if player_move == 1:
+            action_promt = 1
+            return(room,looted_rooms,finished_rooms,action_promt)
+        if player_move == 2:
+            room = "mh"
+            return(room,looted_rooms,finished_rooms,action_promt)
+    if room == "ic1" and not "ic1" in looted_rooms:
         #you enter into the hall of the imperial collage
+        print("you enter into the hall of the imperial collage")
         #First the smell of blood and gunpowerd hits your nose
+        print("First the smell of blood and gunpowerd hits your nose")
         #you see the corpses of several guards litteraling the hall 
+        print("you see the corpses of several guards litteraling the hall")
         #One of them holds a small book
+        print("One of them holds a small book")
         #You grab it
-        #Action promt = 1
+        print("you grab it")
+        action_promt = 1
         #Then a figure leaps out at you
+        print("Then a figure leaps out at you")
         #You manage to dodge but get striked in the stomach
-        #Hp -= 3
+        print("You manage to dodge but get striked in the stomach")
         #The figure wears a massive blue robe
-        #return room,room,looted rooms,finished rooms,action promt
-    #elif room = ic1
+        print("The figure wears a massive blue robe")
+        looted_rooms.append("ic1")
+        return(room,looted_rooms,finished_rooms,action_promt)
+    elif room == "ic1":
         #you enter into the hall of the imperial collage
+        print("you enter into the hall of the imperial collage")
         #the smell of blood and gunpowerd is perasive 
         #you see the corpses of several guards moved and damaged from your fight
         #player move = input(1 to go deeper into the imperial collage, 2 to exit it into the mayors hall) 
