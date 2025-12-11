@@ -16,33 +16,34 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
     active_turn = True
     while fighting == True:
         if turn == "p":
+            active_turn = True
             while active_turn:
                 playeraction = input("Would you like to use a basic move:1 or a magical move:2")
                 playeraction = int(playeraction )
                 if playeraction == 1:
                     #list player options between basic attacks,defnse and speed boost,and sword swipe via 1-4 options
                     playeraction = input("Would you like to use your sword:1 defend:2, speed up:3 (if you have flintlock):4")
-                    if playeraction == 1:
+                    if playeraction == '1':
                         #Attack doing the sword damage
                         if sword == "weak sword":
-                            Damage = random.randint(3,5)
+                            damage = random.randint(3,5)
                         elif sword == "sword":
-                            Damage = random.randint(5,6)
+                            damage = random.randint(5,6)
                         elif sword == "warpstone sword":
-                            Damage = random.randint(4,9)
+                            damage = random.randint(4,9)
                         attacktype = "physical"
-                    elif playeraction == 2:
+                    elif playeraction == '2':
                         #increase defense for the battle
                         pd += 2
-                    elif playeraction == 3:
+                    elif playeraction == '3':
                         #increase speed for the battle
                         ps += 2
-                    elif playeraction == 4 and "flintlock" in playeritems:
+                    elif playeraction == '4' and "flintlock" in playeritems:
                         ps -=1 
-                        Damage = random.randrange(4-8)
+                        damage = random.randrange(4-8)
                         attacktype = "physical"
                     
-                    elif playeraction == 4 and not "flintlock" in playeritems:
+                    elif playeraction == '4' and not "flintlock" in playeritems:
                         print("You do not own the flintlock") 
                         continue
                     else:
@@ -53,15 +54,15 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
                     #Then list players options asking play to give the spells name
                     spell_input = input("What spell would you like to use if you have learned them")
                     #The the player imput for spell
-                    if spell_input == 1 and "heal" in spelllist :
+                    if spell_input == '1' and "heal" in spelllist :
                         php += 3
                         pm -= 2
-                    elif spell_input == 2 and "fire blade " in spelllist:
-                        Damage = random.randrange(4-8)
+                    elif spell_input == '2' and "fire blade " in spelllist:
+                        damage = random.randrange(4-8)
                         pm -= 2
                         attacktype = "magical"
-                    elif spell_input == 3 and "ice spear" in spelllist :
-                        Damage = random.randint(7,8)
+                    elif spell_input == '3' and "ice spear" in spelllist :
+                        damage = random.randint(7,8)
                         pm -= 4
                         attacktype = "magical"
                     else:
@@ -160,41 +161,52 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
                             #display the Lord of change speaks of the future weakening it to the past
                         flop = False
         if turn == "p":
-            if mn == "Falsehoods":
-                 md = damage
-            if attacktype == "magical":
-                mhp -= damage - mmd
-            else:
-                mhp -= damage - md
-            turn = "m"
+                if mn == "Falsehoods":
+                    md = damage
+                if attacktype == "magical":
+                    attack = damage - mmd
+                    if attack < 0:
+                         attack = 0
+                    mhp -=  attack
+                    print(F"you did {attack} damage")
+                else:
+                    attack = damage - md
+                    if attack < 0:
+                         attack = 0
+                    mhp -=  attack
+                    print(F"you did {attack} damage")
+                turn = "m"
         else:
-            if attacktype == "magical":
-                php -= damage - pmd
-            else:
-                php -= damage - pd
-            turn = "p"
-        if php >= 0:
-            endgame = True
-            return(php,pm,endgame)
-        elif mhp >= 0:
-            endgame = False
-            return(php,pm,endgame)
+                if attacktype == "magical":
+                    attack = damage - pmd
+                    if attack < 0:
+                         attack = 0
+                    php -= attack
+                    print(F"it did {attack} damage")
+                else:
+                    attack = damage - pd
+                    if attack < 0:
+                         attack = 0
+                    php -= attack
+                    print(F"it did {attack} damage")
+                turn = "p"
+        if php <= 0:
+                endgame = True
+                return(php,pm,endgame)
+        elif mhp <= 0:
+                endgame = False
+                return(php,pm,endgame)
         firstturncounter += 1
         activeturncounter += 1
         if firstturncounter <= 2:
-            firstturn = True
+                firstturn = True
         if activeturncounter == 3:
-            activeturncounter = 0
-            firstturn = True
-            if ps > ms:
-                turn = "p"
-            else:
-                turn = "m"
-            
+                activeturncounter = 0
+                firstturn = True
 
 #define 
 def  movement(room,looted_rooms,finished_rooms):
-    action_promt = False
+    action_promt = 0
     if room == "te":
         #display 
         print("As you arrive to the city of altdorf")
@@ -208,10 +220,10 @@ def  movement(room,looted_rooms,finished_rooms):
             player_move = input("1 for a local home or 2 for the mayors hall")
             if player_move == "1":
                 room = "lh"
-                return (room,looted_rooms,finished_rooms,action_promt)
+                return(room,looted_rooms,finished_rooms,action_promt)
             if player_move == "2":
                 room = "mh"
-                return (room,looted_rooms,finished_rooms,action_promt)
+                return(room,looted_rooms,finished_rooms,action_promt)
     if room == "lh":
         if "lh" not in looted_rooms:
             #display 
@@ -224,7 +236,7 @@ def  movement(room,looted_rooms,finished_rooms):
                     return(room,looted_rooms,finished_rooms,action_promt)
             if player_move == "2":
                     looted_rooms.append("lh") 
-                    Action_prompt = True
+                    action_promt = 1
                     return(room,looted_rooms,finished_rooms,action_promt)
             if player_move == "3":
                     room = "te"
@@ -235,12 +247,12 @@ def  movement(room,looted_rooms,finished_rooms):
             #display 
             print("You look around the Home and find a suspicus bed")
             player_move = input("1 for the bed or 2 to return to the town entrance")
-            if player_move == 1:
-                    room = "rt"
-                    return(room,looted_rooms,finished_rooms,action_promt)
-            if player_move == 2:
-                    room = "te"
-                    return(room,looted_rooms,finished_rooms,action_promt)
+            if player_move == "1":
+                room = "rt"
+                return(room,looted_rooms,finished_rooms,action_promt)
+            if player_move == "2":
+                room = "te"
+                return(room,looted_rooms,finished_rooms,action_promt)
     if room == "rt":
         if "rt" not in finished_rooms:
             #display you find a tunnel under the bed 
@@ -253,7 +265,7 @@ def  movement(room,looted_rooms,finished_rooms):
             print("It looks a you and squeks out Intruder-thing in tunnels! Quick-quick, get-capture that man-thing!")
             #display he attacks you 
             print("he attacks you")
-            action_prompt = True
+            action_promt = 1
             return(room,looted_rooms,finished_rooms,action_promt)
         else:
             #display you go to empty tunnel where no movement can be seen 
@@ -307,7 +319,7 @@ def  movement(room,looted_rooms,finished_rooms):
         print("you enter into a dingy looking fighting ring")
         player_move = input("1 to enter, 2 to leave") 
         if player_move == "1":
-            action_promt = True
+            action_promt = 1
             return(room,looted_rooms,finished_rooms,action_promt)
         if player_move == "2":
             room = "uc"
@@ -706,7 +718,24 @@ while playing == True:
     looted_rooms = move[1]
     finished_rooms = move[2]
     action = move[3]
-    ply_int = input("Would you like at your stats ( type y to do so)")
-    if ply_int == "y":
-        print(f"player hp is {php}")
+    print(action)
+    if room == "lh" and action == 1:
+         playeritems.append("Health potion")
+         print("you find a health potion")
+    if room == "rt" and action == 1:
+         combat(php,pd,pmd,ps,pm,12,2,1,4,spelllist,"ratman",playeritems)  
+         finished_rooms.append("rt")
+         ply_int = input("Would you like at your stats ( type y to do so)")
+         if ply_int == "y":
+            print(f"player hp is {php},your defense is {pd}, your magical defense is {pmd}")
+            print(f"your speed is {ps}, The players mana is {10}")
+            print(f"You have {playeritems} in your inventory would you like to use any of them")
+            inv_int = input("Type the name of the item you want to use")
+            if inv_int in playeritems:
+                if inv_int == "Health potion":
+                    php += 5
+                    print("That healed 5 health")
+                    playeritems.pop(playeritems.index("Health potion"))
 
+   
+    
