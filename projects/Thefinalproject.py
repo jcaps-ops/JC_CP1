@@ -15,6 +15,7 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
     fighting = True
     active_turn = True
     while fighting == True:
+        damage = 0
         if turn == "p":
             active_turn = True
             while active_turn:
@@ -35,12 +36,14 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
                     elif playeraction == '2':
                         #increase defense for the battle
                         pd += 2
+                        attacktype == "none"
                     elif playeraction == '3':
                         #increase speed for the battle
                         ps += 2
+                        attacktype == "none"
                     elif playeraction == '4' and "flintlock" in playeritems:
                         ps -=1 
-                        damage = random.randrange(4-8)
+                        damage = random.randrange(4,8)
                         attacktype = "physical"
                     
                     elif playeraction == '4' and not "flintlock" in playeritems:
@@ -52,13 +55,21 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
                          
                 elif playeraction == 2:
                     #Then list players options asking play to give the spells name
+                    if "heal" in spelllist:
+                        print(f"For the healign spell input 1")
+                    if "fire blade" in spelllist:
+                        print(f"For the fire blade spell input 2")
+                    if "ice spear" in spelllist:
+                        print(f"For the ice spear spell input 3")    
                     spell_input = input("What spell would you like to use if you have learned them")
                     #The the player imput for spell
                     if spell_input == '1' and "heal" in spelllist :
                         php += 3
+                        print(f"You now have {php} health points")
                         pm -= 2
-                    elif spell_input == '2' and "fire blade " in spelllist:
-                        damage = random.randrange(4-8)
+                        attacktype == "none"
+                    elif spell_input == '2' and "fire blade" in spelllist:
+                        damage = random.randrange(4,8)
                         pm -= 2
                         attacktype = "magical"
                     elif spell_input == '3' and "ice spear" in spelllist :
@@ -71,9 +82,13 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
                 active_turn = False
         else:
             if mn == "ratman":
-                    damage = random.randrange(1,4)
+                    damage = random.randrange(2,5)
                     attacktype = "physical"
-                    print("the ratman swiped at you") 
+                    print("the ratman swiped at you")
+            if mn == "b ratman":
+                    damage = random.randrange(4,8)
+                    attacktype = "physical"
+                    print("the ratman swiped at you")  
             if mn == "cultist":
                     ma = random.randrange(1,2)
                     if ma == 1:
@@ -169,12 +184,13 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
                          attack = 0
                     mhp -=  attack
                     print(F"you did {attack} damage")
-                else:
+                if attacktype == "physical":
                     attack = damage - md
                     if attack < 0:
                          attack = 0
                     mhp -=  attack
                     print(F"you did {attack} damage")
+                print(f"it has {mhp} hp left")
                 turn = "m"
         else:
                 if attacktype == "magical":
@@ -183,12 +199,13 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
                          attack = 0
                     php -= attack
                     print(F"it did {attack} damage")
-                else:
+                if attacktype == "physical":
                     attack = damage - pd
                     if attack < 0:
                          attack = 0
                     php -= attack
                     print(F"it did {attack} damage")
+                print(f"you have {php} hp left")
                 turn = "p"
         if php <= 0:
                 endgame = True
@@ -205,7 +222,7 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
                 firstturn = True
 
 #define 
-def  movement(room,looted_rooms,finished_rooms):
+def  movement(room,looted_rooms):
     action_promt = 0
     if room == "te":
         #display 
@@ -220,10 +237,10 @@ def  movement(room,looted_rooms,finished_rooms):
             player_move = input("1 for a local home or 2 for the mayors hall")
             if player_move == "1":
                 room = "lh"
-                return(room,looted_rooms,finished_rooms,action_promt)
+                return(room,looted_rooms,looted_rooms,action_promt)
             if player_move == "2":
                 room = "mh"
-                return(room,looted_rooms,finished_rooms,action_promt)
+                return(room,looted_rooms,looted_rooms,action_promt)
     if room == "lh":
         if "lh" not in looted_rooms:
             #display 
@@ -233,14 +250,14 @@ def  movement(room,looted_rooms,finished_rooms):
             player_move = input("1 for the bed or 2 for desk, or 3 to return to the town entrance")
             if player_move == "1":
                     room = "rt"
-                    return(room,looted_rooms,finished_rooms,action_promt)
+                    return(room,looted_rooms,looted_rooms,action_promt)
             if player_move == "2":
                     looted_rooms.append("lh") 
                     action_promt = 1
-                    return(room,looted_rooms,finished_rooms,action_promt)
+                    return(room,looted_rooms,looted_rooms,action_promt)
             if player_move == "3":
                     room = "te"
-                    return(room,looted_rooms,finished_rooms,action_promt)
+                    return(room,looted_rooms,looted_rooms,action_promt)
         else:
              #display 
             print("you go to the local home")
@@ -249,12 +266,12 @@ def  movement(room,looted_rooms,finished_rooms):
             player_move = input("1 for the bed or 2 to return to the town entrance")
             if player_move == "1":
                 room = "rt"
-                return(room,looted_rooms,finished_rooms,action_promt)
+                return(room,looted_rooms,looted_rooms,action_promt)
             if player_move == "2":
                 room = "te"
-                return(room,looted_rooms,finished_rooms,action_promt)
+                return(room,looted_rooms,looted_rooms,action_promt)
     if room == "rt":
-        if "rt" not in finished_rooms:
+        if "rt" not in looted_rooms:
             #display you find a tunnel under the bed 
             print("you find a tunnel under the bed")
             #display as you enter into the tunnel you look around 
@@ -266,17 +283,17 @@ def  movement(room,looted_rooms,finished_rooms):
             #display he attacks you 
             print("he attacks you")
             action_promt = 1
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         else:
             #display you go to empty tunnel where no movement can be seen 
             print("you go to empty tunnel where no movement can be seen ")
             player_move = input("1 for the entrace or 2 or go further into the tunnel")
-            if player_move == 1:
+            if player_move == '1':
                     room = "lh"
-                    return(room,looted_rooms,finished_rooms,action_promt)
-            if player_move == 2:
+                    return(room,looted_rooms,looted_rooms,action_promt)
+            if player_move == '2':
                     room = "uc"
-                    return(room,looted_rooms,finished_rooms,action_promt)
+                    return(room,looted_rooms,looted_rooms,action_promt)
     if room == "uc": 
         if "uc" not in looted_rooms:
             #display as you enter into the large cavern 
@@ -292,13 +309,13 @@ def  movement(room,looted_rooms,finished_rooms):
             player_move = input("1 for the first tunnel or 2 or go into the second tunnel or 3 to enter into the building with a sign")
             if player_move == "1":
                     room = "ic2"
-                    return(room,looted_rooms,finished_rooms,action_promt)
+                    return(room,looted_rooms,looted_rooms,action_promt)
             if player_move == "2":
                     room = "icb"
-                    return(room,looted_rooms,finished_rooms,action_promt)
+                    return(room,looted_rooms,looted_rooms,action_promt)
             if player_move == "3":
                     room = "fr1"
-                    return(room,looted_rooms,finished_rooms,action_promt)
+                    return(room,looted_rooms,looted_rooms,action_promt)
                     
     if room == "fr1":
         #display A ratman approches you without ill intent 
@@ -310,20 +327,20 @@ def  movement(room,looted_rooms,finished_rooms):
         player_move = input("1 to enter into the room or 2 to return outside")
         if player_move == "1":
                     room = "fr2"
-                    return(room,looted_rooms,finished_rooms,action_promt)
+                    return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == "2":
                     room = "uc"
-                    return(room,looted_rooms,finished_rooms,action_promt)
+                    return(room,looted_rooms,looted_rooms,action_promt)
     if room == "fr2":
         #you enter into a dingy looking fighting ring
         print("you enter into a dingy looking fighting ring")
         player_move = input("1 to enter, 2 to leave") 
         if player_move == "1":
             action_promt = 1
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == "2":
             room = "uc"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
     if room == "mh":
         print("You enter into the mayors hall and see it empty")
         #You enter into the mayors hall and see it empty
@@ -342,11 +359,11 @@ def  movement(room,looted_rooms,finished_rooms):
         player_move = input("1 - leave for the imperial collage, 2 go to the armory")
         if player_move == "1":
             room = "ic1"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == "2":
             room = "arm"
-            return(room,looted_rooms,finished_rooms,action_promt)
-    if room == "rm":
+            return(room,looted_rooms,looted_rooms,action_promt)
+    if room == "arm":
         print(" You enter into the ajar door to the armory and see a man")
         print("Ah stop there he shouts almost like a screech")#
         print("He prooceds to say oh sorry there witch hunter I thought you were one of those cultists")
@@ -355,10 +372,10 @@ def  movement(room,looted_rooms,finished_rooms):
         player_move = input("1 to go to his shop, 2 to exit it") 
         if player_move == '1':
             action_promt = 1
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == '2':
             room = "mh"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
     if room == "ic1" and not "ic1" in looted_rooms:
         #you enter into the hall of the imperial collage
         print("you enter into the hall of the imperial collage")
@@ -378,7 +395,7 @@ def  movement(room,looted_rooms,finished_rooms):
         #The figure wears a massive blue robe
         print("The figure wears a massive blue robe")
         looted_rooms.append("ic1")
-        return(room,looted_rooms,finished_rooms,action_promt)
+        return(room,looted_rooms,looted_rooms,action_promt)
     elif room == "ic1":
         #you enter into the hall of the imperial collage
         print("you enter into the hall of the imperial collage")
@@ -389,10 +406,10 @@ def  movement(room,looted_rooms,finished_rooms):
         player_move = input("1 to go deeper into the imperial collage, 2 to exit it into the mayors hall") 
         if player_move == 1:
             room = "ic2"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == 2:
             room = "mh"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
     if room == "ic2" and not "ic2" in looted_rooms:
         print("you hear the sound of battling running through your ear")
         #
@@ -414,10 +431,10 @@ def  movement(room,looted_rooms,finished_rooms):
         player_move = input("1 To agree to the ratmen, 2 to work with the man in blue robes") 
         if player_move == 1:
             action_promt = 1
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == 2:
             action_promt = 2
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
     elif room == "ic2":
         #Then hall is litted with corpses of ratmen and corpses of blue robed men
         print("Then hall is litted with corpses of ratmen and corpses of blue robed men")
@@ -426,13 +443,13 @@ def  movement(room,looted_rooms,finished_rooms):
         player_move = input("1 to go to the tunnel, 2 to go to the basement, 3 to go to the entrance of imperial collage") 
         if player_move == 1:
             room = "uc"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == 2:
             room = "icb"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == 3:
             room = "ic1"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
     if room == "icb" and not "icb" in looted_rooms:
         #As you enter into what looks like the basement of an imperial collage
         print("As you enter into what looks like the basement of an imperial collage")
@@ -454,7 +471,7 @@ def  movement(room,looted_rooms,finished_rooms):
         print("They reach for you")
         
         action_promt = 1
-        return(room,looted_rooms,finished_rooms,action_promt)
+        return(room,looted_rooms,looted_rooms,action_promt)
     elif room == "icb":
         #you are in the basement of the imperial collage
         print("you are in the basement of the imperial collage")
@@ -469,13 +486,13 @@ def  movement(room,looted_rooms,finished_rooms):
         Player_move = input("1 to Enter into the room, 2 to exit to a tunnel 3 to exit up through the main entrance")
         if player_move == "1":
             rooms = "mcb"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == "2":
             room = "uc"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == "3":
             room = 'ic2'
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
     if room == 'mcb' and not 'mcb' in looted_rooms:
         #You arrive to room with only one man and hundred of corpses of cultists
         print("You arrive to room with only one man and hundred of corpses of cultists")
@@ -494,11 +511,11 @@ def  movement(room,looted_rooms,finished_rooms):
         player_move = input("1 to Enter into the room, 2 to exit")
         if player_move == 1:
             rooms = "gl"
-            return(room,looted_rooms,finished_rooms,action_promt)
+            return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == 2:
             room = "lcb"
-            return(room,looted_rooms,finished_rooms,action_promt)
-    #if room == gl:
+            return(room,looted_rooms,looted_rooms,action_promt)
+    if room == gl:
         #All that lies behind that door is a massive libary
         print("All that lies behind that door is a massive libary")
         #You walk for what feels like 100 miles
@@ -639,16 +656,15 @@ def  movement(room,looted_rooms,finished_rooms):
         print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#********#####%%%%%%%%%%%%%@%%%%%%%%%%%%########################%%%%%%%%%%%%%%%%%%%%%%#######*****++*#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%#############%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")    
         action_promt = 1
-        return(room,looted_rooms,finished_rooms,action_promt)
+        return(room,looted_rooms,looted_rooms,action_promt)
 
 def randomizemarket1(marketsize,itemstobuy,buyingitemscost):
-    for x in range (0, marketsize):
         ranval = random.randrange(1,4)
         if ranval == 1 and "flintlock" not in itemstobuy:
                 itemstobuy.append("flintlock")
                 buyingitemscost.append(50)
         if ranval == 2 and "health potions" not in itemstobuy:
-                itemstobuy.append("health potions")
+                itemstobuy.append("Health potions")
                 buyingitemscost.append(25)
         if ranval == 3 and "leather" not in itemstobuy:
                 itemstobuy.append("Mana seekers potion")
@@ -658,7 +674,8 @@ def randomizemarket1(marketsize,itemstobuy,buyingitemscost):
                 buyingitemscost.append(40)
         return(itemstobuy, buyingitemscost,ranval)
 def marketbuy(money, itemstobuy, buyingitemscost,marketsize,playeritems):
-        print("Hello mercant what goods would you like to purcase")
+        print(f"you have {money}$")
+        print("Hello what goods would you like to purcase")
         time.sleep(0.1)
         for x in range (0, marketsize):
             print(f"Item {x + 1} is {itemstobuy[x-1]} it costs {buyingitemscost[x-1]} coins")
@@ -670,27 +687,41 @@ def marketbuy(money, itemstobuy, buyingitemscost,marketsize,playeritems):
             isanumber = playeranswer.isdigit()
             if isanumber == True:
                 playeranswer = int(playeranswer)
-                if playeranswer <= maketsize:
+                if playeranswer <= marketsize:
                     money -= buyingitemscost[playeranswer - 1]
                     print(f"You have bought some {itemstobuy[playeranswer - 1]}")
                     time.sleep(0.1)
                     playeritems.append(itemstobuy[playeranswer - 1])
-                    print(f"Your iventory now is {items}")
+                    print(f"Your iventory now is {playeritems}")
                     time.sleep(0.1)
                     print(f"You now have {money} coins ")
                     time.sleep(0.1)
                     playeranswer = input("Would you like to buy again(type N for no)")
                     time.sleep(0.1)
-                    print(playeranswer)
                     if playeranswer == "N":
-                        buying == False
+                        buying = False
             if playeranswer == "N":
-                buying == False
+                buying = False
         return(money, itemstobuy, buyingitemscost,marketsize,playeritems)
+
+def playerstats(php,pd,pmd,ps,pm,playeritems,money):
+     ply_int = input("Would you like at your stats ( type y to do so)")
+     if ply_int == "y":
+        print(f"player hp is {php},your defense is {pd}, your magical defense is {pmd}")
+        print(f"your speed is {ps}, The players mana is {pm}, you have {money}$")
+        print(f"You have {playeritems} in your inventory would you like to use any of them")
+        inv_int = input("Type the name of the item you want to use")
+        if inv_int in playeritems:
+            if inv_int == "Health potion":
+                php += 5
+                print("That healed 5 health")
+                print(f"You now have {php} hp")
+                playeritems.pop(playeritems.index("Health potion"))
+     return(php,pd,pmd,ps,pm,playeritems,money)
             
 money = 40
 items = []
-maketsize = 2
+marketsize = 2
 itemstobuy = []
 buyingitemscost = []
 
@@ -709,14 +740,14 @@ pm = 10
 spelllist = []
 playeritems = ["weak sword"]
 looted_rooms = []
-finished_rooms = []
+looted_rooms = []
 
 playing = True
 while playing == True:
-    move = movement(room,looted_rooms,finished_rooms)
+    move = movement(room,looted_rooms)
     room = move[0]
     looted_rooms = move[1]
-    finished_rooms = move[2]
+    looted_rooms = move[2]
     action = move[3]
     print(action)
     if room == "lh" and action == 1:
@@ -724,18 +755,120 @@ while playing == True:
          print("you find a health potion")
     if room == "rt" and action == 1:
          combat(php,pd,pmd,ps,pm,12,2,1,4,spelllist,"ratman",playeritems)  
-         finished_rooms.append("rt")
-         ply_int = input("Would you like at your stats ( type y to do so)")
-         if ply_int == "y":
-            print(f"player hp is {php},your defense is {pd}, your magical defense is {pmd}")
-            print(f"your speed is {ps}, The players mana is {10}")
-            print(f"You have {playeritems} in your inventory would you like to use any of them")
-            inv_int = input("Type the name of the item you want to use")
-            if inv_int in playeritems:
-                if inv_int == "Health potion":
-                    php += 5
-                    print("That healed 5 health")
-                    playeritems.pop(playeritems.index("Health potion"))
+         looted_rooms.append("rt")
+         money += random.randrange(5,10)
+         playerstat = playerstats(php,pd,pmd,ps,pm,playeritems,money)
+         php = playerstat[0]
+         pd = playerstat[1]
+         pmd = playerstat[2]
+         ps = playerstat[3]
+         pm = playerstat[4]
+         money = playerstat[6]
+         playeritems = playerstat[5]
+    if room == "fr2":
+        combat(php,pd,pmd,ps,pm,15,2,1,4,spelllist,"b ratman",playeritems)  
+        money += random.randrange(8,20)
+        playerstat = playerstats(php,pd,pmd,ps,pm,playeritems,money)
+        php = playerstat[0]
+        pd = playerstat[1]
+        pmd = playerstat[2]
+        ps = playerstat[3]
+        pm = playerstat[4]
+        money = playerstat[6]
+        playeritems = playerstat[5]
+    if room == "arm" and action == 1:
+        randomizemarket1(marketsize,itemstobuy,buyingitemscost)
+        marketbuy(money, itemstobuy, buyingitemscost,marketsize,playeritems)
+    if room == "ic1" and action == 1:
+            print("From the book you picked up you learned the heal spell")
+            spelllist.append("heal")
+            combat(php,pd,pmd,ps,pm,20,1,3,4,spelllist,"cultist",playeritems)  
+            money += random.randrange(8,40)
+            playerstat = playerstats(php,pd,pmd,ps,pm,playeritems,money)
+            php = playerstat[0]
+            pd = playerstat[1]
+            pmd = playerstat[2]
+            ps = playerstat[3]
+            pm = playerstat[4]
+            money = playerstat[6]
+            playeritems = playerstat[5]
+    if room == "ic2" and action == 1:
+        print("Several cultists attack you")
+        combat(php,pd,pmd,ps,pm,20,1,3,4,spelllist,"cultist",playeritems)  
+        print("You killed one")
+        combat(php,pd,pmd,ps,pm,20,1,3,4,spelllist,"cultist",playeritems)
+        print("You killed one")
+        combat(php,pd,pmd,ps,pm,20,1,3,4,spelllist,"cultist",playeritems)
+        print("You killed the final")
+        print("The ratman comes to you and gives you a green sword")
+        print("before disapering")
+        playeritems.insert(0,"warpstone sword") 
+        playeritems.pop(1)
+        playerstat = playerstats(php,pd,pmd,ps,pm,playeritems,money)
+        php = playerstat[0]
+        pd = playerstat[1]
+        pmd = playerstat[2]
+        ps = playerstat[3]
+        pm = playerstat[4]
+        money = playerstat[6]
+        playeritems = playerstat[5]
+    if room == "ic2" and action == 2:
+        print("Several ratmen attack you")
+        combat(php,pd,pmd,ps,pm,20,1,3,4,spelllist,"b ratman",playeritems)  
+        print("You killed one")
+        combat(php,pd,pmd,ps,pm,20,1,3,4,spelllist,"b ratman",playeritems)
+        print("You killed one")
+        combat(php,pd,pmd,ps,pm,20,1,3,4,spelllist,"b ratman",playeritems)
+        print("You killed the final")
+        print("The man in a blue robe comes to you and gives you a spell")
+        print("before disapering")
+        playeritems.append("ice spear") 
+        playerstat = playerstats(php,pd,pmd,ps,pm,playeritems,money)
+        php = playerstat[0]
+        pd = playerstat[1]
+        pmd = playerstat[2]
+        ps = playerstat[3]
+        pm = playerstat[4]
+        money = playerstat[6]
+        playeritems = playerstat[5]
+    if room == "icb" and action == 1:
+        print("Before they reach you you comprehend a new spell")
+        playeritems.append("fire blade")
+        combat(php,pd,pmd,ps,pm,20,1,1,4,spelllist,"Falsehoods",playeritems)
+        playerstat = playerstats(php,pd,pmd,ps,pm,playeritems,money)
+        php = playerstat[0]
+        pd = playerstat[1]
+        pmd = playerstat[2]
+        ps = playerstat[3]
+        pm = playerstat[4]
+        money = playerstat[6]
+        playeritems = playerstat[5]
+    if room == 'mcb' and action == 2:
+        combat(php,pd,pmd,ps,pm,40,2,5,6,spelllist,"cultist",playeritems)  
+        money += random.randrange(8,40)
+        playerstat = playerstats(php,pd,pmd,ps,pm,playeritems,money)
+        php = playerstat[0]
+        pd = playerstat[1]
+        pmd = playerstat[2]
+        ps = playerstat[3]
+        pm = playerstat[4]
+        money = playerstat[6]
+        playeritems = playerstat[5]
+    if room == gl and action_promt:
+        combat(php,pd,pmd,ps,pm,50,2,5,6,spelllist,"lord of change",playeritems)  
+        money += random.randrange(8,40)
+        playerstat = playerstats(php,pd,pmd,ps,pm,playeritems,money)
+        php = playerstat[0]
+        pd = playerstat[1]
+        pmd = playerstat[2]
+        ps = playerstat[3]
+        pm = playerstat[4]
+        money = playerstat[6]
+        playeritems = playerstat[5]
+        playing = False
+
+
+
 
    
     
