@@ -16,11 +16,13 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
     active_turn = True
     while fighting == True:
         damage = 0
+        pm =+ 1
         if turn == "p":
             active_turn = True
             while active_turn:
                 playeraction = input("Would you like to use a basic move:1 or a magical move:2")
-                playeraction = int(playeraction )
+                if playeraction.isnumeric() == True:
+                    playeraction = int(playeraction )
                 if playeraction == 1:
                     #list player options between basic attacks,defnse and speed boost,and sword swipe via 1-4 options
                     playeraction = input("Would you like to use your sword:1 defend:2, speed up:3 (if you have flintlock):4")
@@ -63,18 +65,21 @@ def combat(php,pd,pmd,ps,pm,mhp,md,mmd,ms,spelllist,mn,playeritems):
                         print(f"For the ice spear spell input 3")    
                     spell_input = input("What spell would you like to use if you have learned them")
                     #The the player imput for spell
-                    if spell_input == '1' and "heal" in spelllist :
+                    if spell_input == '1' and "heal" in spelllist and pm > 0:
                         php += 5
                         print(f"You now have {php} health points")
-                        pm -= 2
+                        pm =- 2
+                        print(f"You now have {pm} mana")
                         attacktype = "none"
-                    elif spell_input == '2' and "fire blade" in spelllist:
+                    elif spell_input == '2' and "fire blade" in spelllist and pm > 0:
                         damage = random.randrange(4,8)
-                        pm -= 2
+                        pm =- 2
+                        print(f"You now have {pm} mana")
                         attacktype = "magical"
-                    elif spell_input == '3' and "ice spear" in spelllist :
+                    elif spell_input == '3' and "ice spear" in spelllist and pm > 0:
                         damage = random.randint(7,8)
-                        pm -= 4
+                        pm =- 4
+                        print(f"You now have {pm} mana")
                         attacktype = "magical"
                     else:
                         print("that is not an option") 
@@ -508,7 +513,8 @@ def  movement(room,looted_rooms):
         print("It is the man in the ornate blue robe")
         #He says may we fight now
         print("He says may we fight now")
-        Action_prompt = 1
+        player_move = input("You ready")
+        action_promt = 1
     elif room == "mcb":
         #The room is empty all that remains ae hundred of corpses 
         print("The room is empty all that remains ae hundred of corpses ")
@@ -516,7 +522,7 @@ def  movement(room,looted_rooms):
         print("and a door in and a door out ")
         player_move = input("1 to Enter into the room, 2 to exit")
         if player_move == "1":
-            rooms = "gl"
+            room = "gl"
             return(room,looted_rooms,looted_rooms,action_promt)
         if player_move == "2":
             room = "lcb"
@@ -773,6 +779,7 @@ def  movement(room,looted_rooms):
         time.sleep(0.1)  
         action_promt = 1
         return(room,looted_rooms,looted_rooms,action_promt)
+    return(room,looted_rooms,looted_rooms,action_promt)
 
 def randomizemarket1(marketsize,itemstobuy,buyingitemscost):
         ranval = random.randrange(1,4)
@@ -1028,7 +1035,7 @@ while playing == True:
         money = playerstat[6]
         playeritems = playerstat[5]
         looted_rooms.append("icb")
-    if room == 'mcb' and action == 2:
+    if room == 'mcb' and action == 1:
         combats = combat(php,pd,pmd,ps,pm,40,2,5,6,spelllist,"cultist",playeritems)
         php = combats[0]
         pm = combats[1]

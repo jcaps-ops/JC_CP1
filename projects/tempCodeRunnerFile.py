@@ -1,1 +1,1 @@
-itemstobuy
+isnumeric
