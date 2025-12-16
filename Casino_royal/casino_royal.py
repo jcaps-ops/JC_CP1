@@ -13,8 +13,8 @@ money = 250
 boonbet = 0
 boons = [""]
 classes = [""]
-potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple","Lucky coin","Budlight","Sober","basic Money maker","Extreme money maker","Money printer"]
-potentailbooncost = [60, 120, 70, 100, 180, 50, 100, 60, 75, 136, 120, 180]
+potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple","Lucky coin","Budlight","Sober","basic Money maker","Extreme money maker","Money printer","Little for me","A lot for me"]
+potentailbooncost = [60, 120, 70, 100, 180, 50, 100, 60, 75, 136, 120, 180,200,40,80]
 global islost
 islost = False
 levelCounter = 10
@@ -398,6 +398,18 @@ def calcboon():
          income += 2
          income = income * 3
          print(f"Income after extreme Money maker {income}")
+    if "Little for me" in boons:
+        if islost == False:
+            bi = boonbet/4
+            bi = int(bi)
+            money += bi
+            print(f"Your little for me kicked in earning you {bi} dollars")
+    if "A lot for me" in boons:
+         if islost == False:
+            bi = boonbet/2
+            bi = int(bi)
+            money += bi
+            print(f"Your a lot for me kicked in earning you {bi} dollars")
     
 
     money += income
