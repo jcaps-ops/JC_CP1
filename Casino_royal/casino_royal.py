@@ -343,7 +343,7 @@ def calcboon():
     income = 0
     if "All in frenzy" in boons:
          if islost == False:
-              if boonbet/2 == money:
+              if boonbet == money:
                    income += boonbet
 
     if "Stolen tokens" in boons:
