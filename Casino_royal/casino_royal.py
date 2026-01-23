@@ -13,8 +13,8 @@ money = 500
 boonbet = 0
 boons = []
 classes = []
-potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple","Lucky coin","Budlight","Sober","basic Money maker","Extreme money maker","Money printer","Little for me","A lot for me","Stolen tokens","Too lucky","Grand money maker"]
-potentailbooncost = [60, 120, 70, 100, 180, 50, 100, 60, 75, 136, 120, 180,200,40,80,140,220,500]
+potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple","Lucky coin","Budlight","Sober","basic Money maker","Extreme money maker","Money printer","Little for me","A lot for me","Stolen tokens","Too lucky","Grand money maker","All in frenzy"]
+potentailbooncost = [60, 120, 70, 100, 180, 50, 100, 60, 75, 136, 120, 180,200,40,80,140,220,500,10]
 global islost
 islost = False
 levelCounter = 10
@@ -341,7 +341,11 @@ def calcboon():
     global boonbet
     global boons
     income = 0
-    
+    if "All in frenzy" in boons:
+         if islost == False:
+              if boonbet/2 == money:
+                   income += boonbet
+
     if "Stolen tokens" in boons:
         bi = boonbet/4
         bi = int(bi)
