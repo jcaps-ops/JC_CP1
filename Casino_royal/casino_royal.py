@@ -9,12 +9,12 @@ currentpath = "dice"
 branchpath1 = ""
 branchpath2 = ""
 pathrand = 0
-money = 250
+money = 500
 boonbet = 0
-boons = [""]
-classes = [""]
-potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple","Lucky coin","Budlight","Sober","basic Money maker","Extreme money maker","Money printer","Little for me","A lot for me"]
-potentailbooncost = [60, 120, 70, 100, 180, 50, 100, 60, 75, 136, 120, 180,200,40,80]
+boons = []
+classes = []
+potentailboonname = ["double trouble","money laundering","bonus check","Basic inssurance","diamond inssurance","Daily Double", "Daily Triple","Lucky coin","Budlight","Sober","basic Money maker","Extreme money maker","Money printer","Little for me","A lot for me","Stolen tokens","Too lucky","Grand money maker"]
+potentailbooncost = [60, 120, 70, 100, 180, 50, 100, 60, 75, 136, 120, 180,200,40,80,140,220,500]
 global islost
 islost = False
 levelCounter = 10
@@ -328,6 +328,8 @@ def store():
         luckstat += 5
     if newboon == "Sober":
         luckstat -= 3
+    if newboon == "Too lucky":
+        luckstat += 7
     print(f"You have these boons {boons}")
             
     
@@ -339,6 +341,12 @@ def calcboon():
     global boonbet
     global boons
     income = 0
+    
+    if "Stolen tokens" in boons:
+        bi = boonbet/4
+        bi = int(bi)
+        income += bi
+        print(f"Your Stolen tokens kicked in saving you {bi} dollars")
 
     if "double trouble" in boons:
         boonbet * 2
@@ -398,6 +406,11 @@ def calcboon():
          income += 2
          income = income * 3
          print(f"Income after extreme Money maker {income}")
+    if "Grand money maker" in boons:
+         print(f"Income before Grand Money maker {income}")
+         income += 1
+         income = income * 4
+         print(f"Income after Grand Money maker {income}")
     if "Little for me" in boons:
         if islost == False:
             bi = boonbet/4
