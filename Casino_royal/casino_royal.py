@@ -340,10 +340,11 @@ def calcboon():
     global money
     global boonbet
     global boons
+    global all_in
     income = 0
     if "All in frenzy" in boons:
          if islost == False:
-              if boonbet == money:
+              if all_in == True:
                    income += boonbet
 
     if "Stolen tokens" in boons:
@@ -1031,9 +1032,14 @@ def bet():
     print()               
     global money
     global boonbet
+    global all_in
+    all_in = False
     while True:
         boonbet = input("How much do you want")
         boonbet = int(boonbet)
+        if boonbet == money:
+             print("You went all in")
+             all_in = True
 
         if boonbet > money:
              print("To much money please input a accepted amount")
